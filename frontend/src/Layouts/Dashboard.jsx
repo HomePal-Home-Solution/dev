@@ -1,6 +1,5 @@
 const Dashboard = () => {
     return(
-        <>
             <div className="right-content">
                 <div className="DashboardBoxWrapper d-flex">
                     <div className="dashboardBox">
@@ -28,7 +27,6 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
-        </>
     )
 }
 
