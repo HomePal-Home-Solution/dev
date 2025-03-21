@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png"
+import logo from '../assets/logo.png';
 
 function Header() {
     return (
@@ -16,7 +16,7 @@ function Header() {
                         </div>
 
                         <div className="col-sm-2 d-flex align-items-center part2 pl-10">
-                            Welcome User
+                            {/* Welcome User */}
                         </div>
                     </div>
                 </div>

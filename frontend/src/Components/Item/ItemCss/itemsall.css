@@ -1,0 +1,226 @@
+.container {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 900px;
+    border-collapse: collapse;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+  }
+  
+  .item-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  button {
+    margin: 5px;
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+  
+  .view {
+    background-color: blue;
+    color: white;
+  }
+  
+  .update {
+    background-color: orange;
+    color: white;
+  }
+  
+  .delete {
+    background-color: red;
+    color: white;
+  }
+  .create-button{
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  .total-price {
+    text-align: right;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #e0d8d8;
+  }
+
+  /* Inventory Summary Section */
+.inventory-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 900px;
+}
+
+.total-items h3,
+.total-price h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.total-items h3 {
+  color: #28a745; /* Green color for total items */
+}
+
+.total-price h3 {
+  color: #007bff; /* Blue color for total price */
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  justify-content: right;
+  margin: 20px 0;
+}
+
+.search-bar input {
+  width: 80%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-bar input:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 8px rgba(40, 167, 69, 0.3);
+}
+/* Report Generation Button */
+.report-button-container {
+  display: flex;
+  justify-content: flex-end; /* Align button to the right */
+  margin: 70px 0; /* Maintain vertical margin */
+  padding-right: 60px; /* Add padding to the right for spacing */
+}
+
+.report-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.report-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.report-button:active {
+  transform: translateY(0);
+}
+
+/* Out-of-Stock Notification */
+.out-of-stock-notification {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #ffebee; /* Light red background */
+  border: 1px solid #ffcdd2; /* Light red border */
+  border-radius: 5px;
+  width: 900px;
+}
+
+.notification-item {
+  margin: 5px 0;
+}
+
+.notification-text {
+  color: #c62828; /* Dark red text */
+  font-weight: bold;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between buttons */
+  margin-top: 20px;
+}
+
+/* Create Item Button */
+.create-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.create-button:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+.create-button:active {
+  transform: translateY(0);
+}
+
+/* Report Generation Button */
+.report-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  left: 100px;
+
+}
+
+.report-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.report-button:active {
+  transform: translateY(0);
+}
+  

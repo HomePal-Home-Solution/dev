@@ -1,5 +1,6 @@
 import * as React from 'react';
 import List from '@mui/material/List';
+import { Link } from 'react-router-dom';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -49,18 +50,22 @@ const Sidebar = () => {
                 </ListItemButton>
                 <Collapse in={openSections.items} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
+                    <Link to="/allitem" style={{ textDecoration: 'none', color: 'inherit' }}>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
                                 <EggIcon />
                             </ListItemIcon>
-                            <ListItemText primary="Ingredients" />
+                            <ListItemText primary="View Items" />
                         </ListItemButton>
+                    </Link>
+                    <Link to="/createitem" style={{ textDecoration: 'none', color: 'inherit' }}>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
                                 <RestaurantIcon />
                             </ListItemIcon>
-                            <ListItemText primary="Management" />
+                            <ListItemText primary="Create Item" />
                         </ListItemButton>
+                        </Link>
                     </List>
                 </Collapse>
 
