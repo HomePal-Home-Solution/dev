@@ -47,12 +47,21 @@ header .part2 {
     height: 100vh;
     width: 33vh;
 }
-.main .content {
-    padding-top: 80px;
-    padding-left: 33vh;
-    margin: 10px;
-    width: 80%;
-    flex: 0 0 80%;
+.main {
+    display: flex;
+    width: 100vw; /* Ensure it takes full viewport width */
+    width: 100%;
+    overflow: hidden;
+}
+
+.content {
+    flex-grow: 1; /* Makes it expand to fill available space */
+    width: 100%; /* Ensure full width usage */
+    margin-top: 100px;
+    margin-left: 35vh;
+    margin-right: 2vh;
+    margin-bottom: 2vh;
+    padding: 0;
 }
 
 .main .sidebarWrapper {
