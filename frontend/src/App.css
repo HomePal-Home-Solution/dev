@@ -5,13 +5,13 @@
   
 body {
     font-family: "Open Sans", sans-serif;
-    background: #d3d3d3 !important;
+    background: #dbdbdb !important;
   }
   
 header {
     width: 100%;
     height: 80px;
-    background: #fff;
+    background: rgb(113, 201, 206);
     position: fixed;
     top: 0px;
     left: 0px;
@@ -43,7 +43,7 @@ header .part2 {
 
 .sidebar {
     padding-top: 80px;
-    background: #fff;
+    background: hsl(0, 0%, 100%) !important;
     height: 100vh;
     width: 33vh;
 }
@@ -80,19 +80,31 @@ header .part2 {
 }
 
 .right-content {
-    padding: 100px 25px;
-    background: #fff;
-  }
+    width: 100%; /* Ensure it takes full width */
+    padding: 20px; /* Adjust padding */
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
   
   
-  .DashboardBoxWrapper {
-    gap: 15px;
-    width: 100%;
+.DashboardBoxWrapper {
+    display: flex;
     flex-wrap: wrap;
-  }
-  
-  .DashboardBoxWrapper .dashboardBox {
-    width: 45%;
-    height: 25%;
+    justify-content: space-between; /* Make elements stretch across */
+    width: 100%; /* Ensure it uses full available width */
+}
+
+.DashboardBoxWrapper .dashboardBox {
+    width: calc(50% - 7.5px); /* Adjust for spacing */
+    height: 120px; /* Set a fixed height */
     background: red;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+

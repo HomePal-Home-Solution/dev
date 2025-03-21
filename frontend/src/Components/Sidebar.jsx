@@ -1,5 +1,6 @@
 import * as React from 'react';
 import List from '@mui/material/List';
+import { Link } from 'react-router-dom';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -30,9 +31,9 @@ const Sidebar = () => {
 
     return (
         <div className='sidebar'>
-            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} component="nav">
+            <List sx={{ width: '100%', maxWidth: 360 }} component="nav">
                 
-                <ListItemButton>
+                <ListItemButton to="/dashboard">
                     <ListItemIcon>
                         <DashboardIcon />
                     </ListItemIcon>
@@ -49,18 +50,22 @@ const Sidebar = () => {
                 </ListItemButton>
                 <Collapse in={openSections.items} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
+                    <Link to="/allitem" style={{ textDecoration: 'none', color: 'inherit' }}>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
                                 <EggIcon />
                             </ListItemIcon>
-                            <ListItemText primary="Ingredients" />
+                            <ListItemText primary="View Items" />
                         </ListItemButton>
+                    </Link>
+                    <Link to="/createitem" style={{ textDecoration: 'none', color: 'inherit' }}>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
                                 <RestaurantIcon />
                             </ListItemIcon>
-                            <ListItemText primary="Management" />
+                            <ListItemText primary="Create Item" />
                         </ListItemButton>
+                        </Link>
                     </List>
                 </Collapse>
 
@@ -99,13 +104,13 @@ const Sidebar = () => {
                 </ListItemButton>
                 <Collapse in={openSections.mealPlanner} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
-                        <ListItemButton sx={{ pl: 4 }}>
+                        <ListItemButton sx={{ pl: 4 }} to="/recipe">
                             <ListItemIcon>
                                 <MenuBookIcon />
                             </ListItemIcon>
                             <ListItemText primary="Recipes" />
                         </ListItemButton>
-                        <ListItemButton sx={{ pl: 4 }}>
+                        <ListItemButton sx={{ pl: 4 }} to="/mealPlanner">
                             <ListItemIcon>
                                 <RestaurantIcon />
                             </ListItemIcon>

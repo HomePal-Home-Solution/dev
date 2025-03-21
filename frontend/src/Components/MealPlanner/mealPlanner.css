@@ -1,0 +1,15 @@
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 10px;
+}
+
+.search-btn-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns button to right */
+    height: 70px;
+}
