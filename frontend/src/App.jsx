@@ -1,13 +1,15 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from './Components/Header';
 import Sidebar from './Components/Sidebar';
 import Dashboard from './Layouts/Dashboard';
+import Recipe from './Layouts/Recipe/Recipe.jsx';
+import MealPlanner from './Layouts/Recipe/MealPlanner.jsx';
 import ItemsDisplay from './Components/Item/ItemsDisplay';
 import CreateItemForm from './Components/Item/CreateItemForm';
 import ViewItemPage from './Components/Item/ViewItempage'; // Ensure the correct file name
-import UpdateItem from './Components/Item/UpdateItems'; // Ensure the correct file name
+import UpdateItem from './Components/Item/UpdateItems';
 
 function App() {
   return (
@@ -20,8 +22,11 @@ function App() {
 
         <div className='content'>
           <Routes>
-            <Route path='/' exact element={<Dashboard />} />
-            <Route path='/dashboard' exact element={<Dashboard />} />
+            <Route path={'/'} exact={true} element={<Navigate to="dashboard"/>}/>
+            <Route path={'/dashboard'} exact={true} element={<Dashboard/>}/>
+            <Route path={'/recipe'} exact={true} element={<Recipe/>}/>
+            <Route path={'/mealPlanner'} exact={true} element={<MealPlanner/>}/>
+              
             <Route path='/allitem' exact element={<ItemsDisplay />} />
             <Route path='/createitem' exact element={<CreateItemForm />} />
             <Route path='/item/:id' exact element={<ViewItemPage />} />

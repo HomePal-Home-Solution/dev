@@ -31,9 +31,9 @@ const Sidebar = () => {
 
     return (
         <div className='sidebar'>
-            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} component="nav">
+            <List sx={{ width: '100%', maxWidth: 360 }} component="nav">
                 
-                <ListItemButton>
+                <ListItemButton to="/dashboard">
                     <ListItemIcon>
                         <DashboardIcon />
                     </ListItemIcon>
@@ -104,13 +104,13 @@ const Sidebar = () => {
                 </ListItemButton>
                 <Collapse in={openSections.mealPlanner} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
-                        <ListItemButton sx={{ pl: 4 }}>
+                        <ListItemButton sx={{ pl: 4 }} to="/recipe">
                             <ListItemIcon>
                                 <MenuBookIcon />
                             </ListItemIcon>
                             <ListItemText primary="Recipes" />
                         </ListItemButton>
-                        <ListItemButton sx={{ pl: 4 }}>
+                        <ListItemButton sx={{ pl: 4 }} to="/mealPlanner">
                             <ListItemIcon>
                                 <RestaurantIcon />
                             </ListItemIcon>
