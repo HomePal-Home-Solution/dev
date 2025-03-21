@@ -1,0 +1,8 @@
+.createRecipeBtnBox {
+    margin-right: 20px;
+    margin-bottom: 30px;
+}
+
+.createRecipeBtnBox Button {
+    margin-left: 15px !important;
+}
