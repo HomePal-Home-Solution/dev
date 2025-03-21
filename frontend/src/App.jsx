@@ -6,15 +6,18 @@ import Sidebar from './Components/Sidebar';
 import Dashboard from './Layouts/Dashboard';
 import Recipe from './Layouts/Recipe/Recipe.jsx';
 import MealPlanner from './Layouts/Recipe/MealPlanner.jsx';
+import ItemsDisplay from './Components/Item/ItemsDisplay';
+import CreateItemForm from './Components/Item/CreateItemForm';
+import ViewItemPage from './Components/Item/ViewItempage'; // Ensure the correct file name
+import UpdateItem from './Components/Item/UpdateItems';
 
 function App() {
-
   return (
     <BrowserRouter>
-      <Header/>
+      <Header />
       <div className='main d-flex'>
         <div className='sidebarWrapper'>
-          <Sidebar/>
+          <Sidebar />
         </div>
 
         <div className='content'>
@@ -23,11 +26,16 @@ function App() {
             <Route path={'/dashboard'} exact={true} element={<Dashboard/>}/>
             <Route path={'/recipe'} exact={true} element={<Recipe/>}/>
             <Route path={'/mealPlanner'} exact={true} element={<MealPlanner/>}/>
+              
+            <Route path='/allitem' exact element={<ItemsDisplay />} />
+            <Route path='/createitem' exact element={<CreateItemForm />} />
+            <Route path='/item/:id' exact element={<ViewItemPage />} />
+            <Route path='/updateitem/:id' exact element={<UpdateItem />} />
           </Routes>
         </div>
       </div>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;
