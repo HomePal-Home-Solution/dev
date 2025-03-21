@@ -27,9 +27,10 @@
     font-size: 1.1rem !important;
 }
 
-.search-bar {
+.recipe-search-bar {
     margin-right: 60px !important;
-    width: 260px;
+    width: 280px;
+    border: none;
 }
 
 .recipe-list {

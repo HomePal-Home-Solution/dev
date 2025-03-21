@@ -98,18 +98,18 @@ const handleCloseViewDialog = () => {
           <Table sx={{ minWidth: 750 }}>
             <TableHead>
               <TableRow>
-                <TableCell sx={{fontSize: '1.3rem', fontWeight: 'bold'}}>Recipe Name</TableCell>
-                <TableCell sx={{fontSize: '1.3rem', fontWeight: 'bold'}} align="right">Calories</TableCell>
-                <TableCell sx={{fontSize: '1.3rem', fontWeight: 'bold'}} align="right">Fat (g)</TableCell>
-                <TableCell sx={{fontSize: '1.3rem', fontWeight: 'bold'}} align="right">Carbs (g)</TableCell>
-                <TableCell sx={{fontSize: '1.3rem', fontWeight: 'bold'}} align="right">Protein (g)</TableCell>
-                <TableCell sx={{fontSize: '1.3rem', fontWeight: 'bold'}} align="center">Actions</TableCell>
+                <TableCell sx={{fontSize: '1.3rem'}}>Recipe Name</TableCell>
+                <TableCell sx={{fontSize: '1.3rem'}} align="right">Calories</TableCell>
+                <TableCell sx={{fontSize: '1.3rem'}} align="right">Fat (g)</TableCell>
+                <TableCell sx={{fontSize: '1.3rem'}} align="right">Carbs (g)</TableCell>
+                <TableCell sx={{fontSize: '1.3rem'}} align="right">Protein (g)</TableCell>
+                <TableCell sx={{fontSize: '1.3rem'}} align="center">Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {visibleRows.map((row) => (
                 <TableRow key={row.id}>
-                  <TableCell component="th" scope="row">{row.name}</TableCell>
+                  <TableCell  scope="row" sx={{fontSize: '1.02rem'}}>{row.name}</TableCell>
                   <TableCell align="right">{row.calories}</TableCell>
                   <TableCell align="right">{row.fat}</TableCell>
                   <TableCell align="right">{row.carbs}</TableCell>

@@ -32,7 +32,7 @@ const Recipe = () => {
                     id="outlined-basic" 
                     label="Search Recipes" 
                     variant="outlined" 
-                    className="search-bar"
+                    className="recipe-search-bar"
                 />
             </div>
 
