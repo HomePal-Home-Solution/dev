@@ -2,7 +2,9 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { connectDB } from './config/database.js';
 
-import routes from "./routes/routes.js"; // Import the centralized routes
+import routes from "./routes/routes.js";
+import  recipeRoutes from "./routes/recipe.router.js";
+import shoppingRoutes from "./routes/shoppingRouter.js";
 
 dotenv.config();
 
@@ -12,6 +14,8 @@ app.use(express.json()); // Allows us to accept JSON data in the req.body
 
 // Use the routes file
 app.use("/api", routes); // This will map to `/api/recipes`
+app.use("/api/recipes", recipeRoutes);
+app.use("/api/shopping", shoppingRoutes);
 
 app.listen(5000, () => {
     connectDB();

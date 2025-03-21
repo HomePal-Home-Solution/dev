@@ -4,6 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from './Components/Header';
 import Sidebar from './Components/Sidebar';
 import Dashboard from './Layouts/Dashboard';
+import CreateShopping from './Components/shopping/CreateShopping';
+import UpdateShopping from './Components/shopping/UpdateShopping';
 
 function App() {
 
@@ -19,6 +21,8 @@ function App() {
           <Routes>
             <Route path={'/'} exact={true} element={<Dashboard/>}/>
             <Route path={'/dashboard'} exact={true} element={<Dashboard/>}/>
+            <Route path='/create-shopping' element={<CreateShopping/>}/>
+            <Route path='/create-shopping/update/:id' element={<UpdateShopping/>}/>
           </Routes>
         </div>
       </div>

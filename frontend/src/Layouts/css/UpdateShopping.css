@@ -1,0 +1,73 @@
+/* Container for the entire page
+.update-shopping-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Heading */
+.heading {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+/* Form container */
+.form-container {
+  background-color: white;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* General input field styling */
+.input-field, .select-field, .textarea-field {
+  border: 1px solid #d1d5db;
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 8px;
+  background-color: #f3f4f6;
+}
+
+/* Disabled input fields */
+.input-field:disabled {
+  background-color: #e5e7eb;
+  cursor: not-allowed;
+}
+
+/* Textarea specific styles */
+.textarea-field {
+  height: 100px;
+  resize: vertical;
+}
+
+/* Button container */
+.button-container {
+  display: flex;
+  gap: 8px;
+}
+
+/* Submit button */
+.submit-button {
+  background-color: #10b981; /* green */
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Back button */
+.back-button {
+  background-color: #6b7280; /* gray */
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Loading text */
+.loading {
+  text-align: center;
+  font-size: 1.25rem;
+  margin-top: 20px;
+} */

@@ -78,7 +78,7 @@ const Sidebar = () => {
                             <ListItemIcon>
                                 <EggIcon />
                             </ListItemIcon>
-                            <ListItemText primary="Ingredients" />
+                            <ListItemText primary="Shopping List" />
                         </ListItemButton>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
