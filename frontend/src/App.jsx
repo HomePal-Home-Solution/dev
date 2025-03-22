@@ -10,6 +10,8 @@ import ItemsDisplay from './Components/Item/ItemsDisplay';
 import CreateItemForm from './Components/Item/CreateItemForm';
 import ViewItemPage from './Components/Item/ViewItempage'; // Ensure the correct file name
 import UpdateItem from './Components/Item/UpdateItems';
+import CreateShopping from './Components/Shopping/CreateShopping.jsx';
+import UpdateShopping from './Components/Shopping/UpdateShopping.jsx';
 
 function App() {
   return (
@@ -31,6 +33,10 @@ function App() {
             <Route path='/createitem' exact element={<CreateItemForm />} />
             <Route path='/item/:id' exact element={<ViewItemPage />} />
             <Route path='/updateitem/:id' exact element={<UpdateItem />} />
+
+            <Route path='/create-shopping' element={<CreateShopping/>}/>
+            <Route path='/create-shopping/update/:id' element={<UpdateShopping/>}/>
+
           </Routes>
         </div>
       </div>
