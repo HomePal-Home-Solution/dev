@@ -12,6 +12,9 @@ import ViewItemPage from './Components/Item/ViewItempage'; // Ensure the correct
 import UpdateItem from './Components/Item/UpdateItems';
 import CreateShopping from './Components/Shopping/CreateShopping.jsx';
 import UpdateShopping from './Components/Shopping/UpdateShopping.jsx';
+import AddTaskForm from './Components/ToDoList/AddTaskForm.jsx';
+import UpdateToDo from './Components/ToDoList/UpdateToDo.jsx';
+import ToDoList from './Components/ToDoList/ToDoList.jsx';
 
 function App() {
   return (
@@ -36,6 +39,10 @@ function App() {
 
             <Route path='/create-shopping' element={<CreateShopping/>}/>
             <Route path='/create-shopping/update/:id' element={<UpdateShopping/>}/>
+
+            <Route path="/daily-tasks-form" element={<AddTaskForm />} />
+            <Route path="/update-todolist/:taskId" element={<UpdateToDo />} />
+            <Route path="/todolist" element={<ToDoList />} />
 
           </Routes>
         </div>

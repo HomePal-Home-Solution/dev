@@ -1,0 +1,176 @@
+/* Container for the entire to-do list */
+.todo-container {
+    max-width: 100%;
+    margin: auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Search bar and search button */
+.search-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-container input {
+    padding: 8px;
+    width: 60%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-btn {
+    background: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-btn:hover {
+    background: #0157b4;
+}
+
+/* Category filter buttons (optional if used) */
+.category-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.category-btn {
+    padding: 8px 15px;
+    border: none;
+    background: #7b7b7b;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.category-btn:hover {
+    background: #656565;
+}
+
+/* Add task button */
+.add-btn {
+    display: block;
+    margin-right: auto;
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.add-btn:hover {
+    background: #0157b4;
+}
+
+/* Task table */
+.todo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+/* Table headers */
+.todo-table th,
+.todo-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Priority color coding */
+.priority {
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.priority.high {
+    background: red;
+    color: white;
+}
+
+.priority.medium {
+    background: yellow;
+    color: black;
+}
+
+.priority.low {
+    background: purple;
+    color: white;
+}
+
+/* Button styles for complete task */
+.complete-btn {
+    background: green;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.complete-btn:hover {
+    background: darkgreen;
+}
+
+/* Edit and delete button styles */
+.edit-icon, .delete-icon {
+    margin-left: 10px;
+    cursor: pointer;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+.edit-icon {
+    background-color: #ffc107; /* Yellow for edit */
+    color: white;
+}
+
+.edit-icon:hover {
+    background-color: #e0a800; /* Darker yellow */
+}
+
+.delete-icon {
+    background-color: #dc3545; /* Red for delete */
+    color: white;
+}
+
+.delete-icon:hover {
+    background-color: #c82333; /* Darker red */
+}
+
+/* Hover effects for buttons */
+button:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Message for no tasks */
+.no-tasks {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+}
