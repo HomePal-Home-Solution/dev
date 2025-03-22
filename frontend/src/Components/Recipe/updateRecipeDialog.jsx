@@ -15,7 +15,7 @@ const UpdateRecipe = ({ open, onClose, recipe }) => {
         calories: recipe?.calories || '',
         protein: recipe?.protein || '',
         carbs: recipe?.carbs || '',
-        fats: recipe?.fat || '' // Fixed property name
+        fats: recipe?.fat || '' 
     });
 
     const [errors, setErrors] = React.useState({});

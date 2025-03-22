@@ -20,26 +20,22 @@ const CreateRecipe = ({ open, onClose }) => {
 
     const [errors, setErrors] = React.useState({});
 
-    // Regex for allowed characters (letters, numbers, spaces only)
     const nameRegex = /^[A-Za-z0-9\s]*$/;
 
-    // Handle input change
     const handleChange = (e) => {
         const { name, value } = e.target;
 
-        // Restrict symbols for name and ingredients
         if ((name === "name" || name === "ingredients") && !nameRegex.test(value)) {
             setErrors((prev) => ({ ...prev, [name]: "Symbols are not allowed" }));
-            return; // Prevent invalid input
+            return;
         }
 
         setFormData((prev) => ({ ...prev, [name]: value }));
 
-        // Clear error when user starts typing correctly
         setErrors((prev) => ({ ...prev, [name]: "" }));
     };
 
-    // Validate fields before submission
+    // Disable create button
     const validateForm = () => {
         let newErrors = {};
         Object.keys(formData).forEach((key) => {
@@ -52,11 +48,10 @@ const CreateRecipe = ({ open, onClose }) => {
         return Object.keys(newErrors).length === 0;
     };
 
-    // Handle save button click
     const handleSave = () => {
         if (validateForm()) {
             console.log("Recipe Created:", formData);
-            onClose(); // Close the dialog
+            onClose();
         }
     };
 
