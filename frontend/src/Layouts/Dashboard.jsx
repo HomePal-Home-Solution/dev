@@ -84,7 +84,7 @@ const Dashboard = () => {
 
         {/* Task Section */}
         <Card>
-          <CardContent>
+          <CardContent onClick={() => handleCardClick("/todolist")}>
             <Typography variant="h6">Your Task</Typography>
             <Typography color="textSecondary">Review meal plan with the team</Typography>
             <Typography variant="body2" color="textSecondary">7 Dec, 2019 | 10:00 AM</Typography>

@@ -10,6 +10,12 @@ const MealPlanner = () => {
             </div>
             {/* SearchBox Component */}
             <SearchBox />
+
+
+
+            <div style={{margin: "30px"}}>
+                Meal Plane ...
+            </div>
         </div>
     );
 };

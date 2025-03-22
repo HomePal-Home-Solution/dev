@@ -7,6 +7,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
+import Alert from '@mui/material/Alert';
 
 const CreateRecipe = ({ open, onClose }) => {
     const [formData, setFormData] = React.useState({
@@ -19,6 +20,7 @@ const CreateRecipe = ({ open, onClose }) => {
     });
 
     const [errors, setErrors] = React.useState({});
+    const [successMessage, setSuccessMessage] = React.useState('');
 
     const nameRegex = /^[A-Za-z0-9\s]*$/;
 
@@ -31,11 +33,9 @@ const CreateRecipe = ({ open, onClose }) => {
         }
 
         setFormData((prev) => ({ ...prev, [name]: value }));
-
         setErrors((prev) => ({ ...prev, [name]: "" }));
     };
 
-    // Disable create button
     const validateForm = () => {
         let newErrors = {};
         Object.keys(formData).forEach((key) => {
@@ -51,7 +51,11 @@ const CreateRecipe = ({ open, onClose }) => {
     const handleSave = () => {
         if (validateForm()) {
             console.log("Recipe Created:", formData);
-            onClose();
+            setSuccessMessage('Recipe successfully created!');
+            setTimeout(() => {
+                setSuccessMessage('');
+                onClose();
+            }, 2000);
         }
     };
 
@@ -59,6 +63,7 @@ const CreateRecipe = ({ open, onClose }) => {
         <Dialog open={open} onClose={onClose} aria-labelledby="create-recipe-dialog">
             <DialogTitle id="create-recipe-dialog">Create New Recipe</DialogTitle>
             <DialogContent>
+                {successMessage && <Alert severity="success">{successMessage}</Alert>}
                 <TextField 
                     autoFocus 
                     margin="dense" 
@@ -85,7 +90,6 @@ const CreateRecipe = ({ open, onClose }) => {
                     helperText={errors.ingredients}
                 />
 
-                {/* Row for Calories & Proteins */}
                 <Grid container spacing={2}>
                     <Grid item xs={6}>
                         <TextField 
@@ -119,7 +123,6 @@ const CreateRecipe = ({ open, onClose }) => {
                     </Grid>
                 </Grid>
 
-                {/* Row for Carbs & Fats */}
                 <Grid container spacing={2}>
                     <Grid item xs={6}>
                         <TextField 
@@ -159,7 +162,7 @@ const CreateRecipe = ({ open, onClose }) => {
                     variant="contained" 
                     color="primary" 
                     onClick={handleSave} 
-                    disabled={!Object.values(formData).every(value => value !== '')}
+                    // disabled={!Object.values(formData).every(value => value !== '')}
                 >
                     Save Recipe
                 </Button>
