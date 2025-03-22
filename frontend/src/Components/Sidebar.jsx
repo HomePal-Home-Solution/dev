@@ -142,18 +142,14 @@ const Sidebar = () => {
                 </ListItemButton>
                 <Collapse in={openSections.toDoList} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
-                        <ListItemButton sx={{ pl: 4 }}>
-                            <ListItemIcon>
-                                <EggIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Ingredients" />
-                        </ListItemButton>
-                        <ListItemButton sx={{ pl: 4 }}>
-                            <ListItemIcon>
-                                <RestaurantIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Management" />
-                        </ListItemButton>
+                        <Link to="/todolist" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <ListItemButton sx={{ pl: 4 }}>
+                                <ListItemIcon>
+                                    <PostAddIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Ingredients" />
+                            </ListItemButton>
+                        </Link>
                     </List>
                 </Collapse>
 
