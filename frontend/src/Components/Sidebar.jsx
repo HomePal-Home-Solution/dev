@@ -79,18 +79,20 @@ const Sidebar = () => {
                 </ListItemButton>
                 <Collapse in={openSections.shopping} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
+                    <Link to="/create-shopping" style={{ textDecoration: 'none' , color: 'inherit'}}>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
                                 <EggIcon />
                             </ListItemIcon>
-                            <ListItemText primary="Ingredients" />
+                            <ListItemText primary="Shopping List" />
                         </ListItemButton>
-                        <ListItemButton sx={{ pl: 4 }}>
+                    </Link>
+                        {/* <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
                                 <RestaurantIcon />
                             </ListItemIcon>
                             <ListItemText primary="Management" />
-                        </ListItemButton>
+                        </ListItemButton> */}
                     </List>
                 </Collapse>
 
