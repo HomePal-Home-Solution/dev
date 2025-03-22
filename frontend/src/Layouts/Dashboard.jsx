@@ -33,43 +33,47 @@ const Dashboard = () => {
   };
 
   return (
-    <div style={{ display: "flex", padding: "20px", backgroundColor: "#f4f4f4", minHeight: "100vh", borderRadius: "10px" }}>
+    <div style={{ display: "flex", padding: "20px", backgroundColor: "#f4f4f4", minHeight: "85vh", borderRadius: "10px" }}>
       {/* Left Section (Folders) */}
       <div style={{ flex: 3, padding: "20px", margin: "30px" }}>
-        {/* Dashboard Header */}
-        <Typography variant="h4" gutterBottom style={{ fontSize: "2.5rem", fontWeight: "bold"}}>
-          Dashboard
-        </Typography>
-        {/* Welcome Message and Time */}
-        <Typography variant="h6" gutterBottom>
-          {greeting}, User! The current time is {currentTime}
-        </Typography>
+        <div style={{backgroundColor: "#fff", margin: "10px", padding: "30px", paddingTop: "-20px", borderRadius: "10px"}}>
+          {/* Dashboard Header */}
+          <Typography variant="h4" gutterBottom style={{ fontSize: "2.5rem", fontWeight: "bold"}}>
+            Dashboard
+          </Typography>
+          {/* Welcome Message and Time */}
+          <Typography variant="h6" gutterBottom>
+            {greeting}, User! The current time is {currentTime}
+          </Typography>
+        </div>
 
-        {/* Manage Section */}
-        <Typography variant="h5" gutterBottom style={{ fontSize: "2rem", marginTop: "30px", marginBottom: "20px"}}>
-          Manage Section
-        </Typography>
-        <Grid container spacing={3}>
-          {[{ title: "Item Management", color: "#e57373", path: "/allitem" },
-            { title: "Shopping List", color: "#64b5f6", path: "/create-shopping" },
-            { title: "Meal Planner", color: "#ffd54f", path: "/mealPlanner" }].map((folder, index) => (
-            <Grid item xs={12} sm={4} key={index} style={{ cursor: "pointer" }}>
-              <Card
-                style={{ backgroundColor: folder.color, color: "white" }}
-                onClick={() => handleCardClick(folder.path)}
-              >
-                <CardContent>
-                  <Typography variant="h6">{folder.title}</Typography>
-                  <Typography>Click Here</Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+        <div style={{backgroundColor: "#fff", margin: "10px", padding: "30px", borderRadius: "10px"}}>
+          {/* Manage Section */}
+          <Typography variant="h5" gutterBottom style={{ fontSize: "2rem", marginTop: "30px", marginBottom: "20px"}}>
+            Manage Section
+          </Typography>
+          <Grid container spacing={3}>
+            {[{ title: "Item Management", color: "#e57373", path: "/allitem" },
+              { title: "Shopping List", color: "#64b5f6", path: "/create-shopping" },
+              { title: "Meal Planner", color: "#ffd54f", path: "/mealPlanner" }].map((folder, index) => (
+              <Grid item xs={12} sm={4} key={index} style={{ cursor: "pointer" }}>
+                <Card
+                  style={{ backgroundColor: folder.color, color: "white" }}
+                  onClick={() => handleCardClick(folder.path)}
+                >
+                  <CardContent>
+                    <Typography variant="h6">{folder.title}</Typography>
+                    <Typography>Click Here</Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </div>
       </div>
 
       {/* Right Section (Calendar & Tasks) */}
-      <div style={{ flex: 1, marginRight: "30px" }}>
+      <div style={{ flex: 1, marginRight: "30px", marginTop: "50px" }}>
         {/* Calendar Section */}
         <Card style={{ marginBottom: "20px", textAlign: "center", padding: "10px" }}>
           <CardContent>
