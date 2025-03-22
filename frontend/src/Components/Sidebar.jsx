@@ -9,10 +9,16 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import CategoryIcon from '@mui/icons-material/Category';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import FlatwareIcon from '@mui/icons-material/Flatware';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import EggIcon from '@mui/icons-material/Egg';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import FoodBankIcon from '@mui/icons-material/FoodBank';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import AddIcon from '@mui/icons-material/Add';
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import EventNoteIcon from '@mui/icons-material/EventNote';
 
 const Sidebar = () => {
     const [openSections, setOpenSections] = React.useState({
@@ -53,7 +59,7 @@ const Sidebar = () => {
                     <Link to="/allitem" style={{ textDecoration: 'none', color: 'inherit' }}>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
-                                <EggIcon />
+                                <PostAddIcon />
                             </ListItemIcon>
                             <ListItemText primary="View Items" />
                         </ListItemButton>
@@ -61,7 +67,7 @@ const Sidebar = () => {
                     <Link to="/createitem" style={{ textDecoration: 'none', color: 'inherit' }}>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
-                                <RestaurantIcon />
+                                <AddIcon />
                             </ListItemIcon>
                             <ListItemText primary="Create Item" />
                         </ListItemButton>
@@ -72,7 +78,7 @@ const Sidebar = () => {
                 {/* Shopping Management */}
                 <ListItemButton onClick={() => handleClick("shopping")}>
                     <ListItemIcon>
-                        <CategoryIcon />
+                        <ShoppingCartIcon />
                     </ListItemIcon>
                     <ListItemText primary="Shopping" />
                     {openSections.shopping ? <ExpandLess /> : <ExpandMore />}
@@ -82,7 +88,7 @@ const Sidebar = () => {
                     <Link to="/create-shopping" style={{ textDecoration: 'none' , color: 'inherit'}}>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
-                                <EggIcon />
+                                <ShoppingCartCheckoutIcon />
                             </ListItemIcon>
                             <ListItemText primary="Shopping List" />
                         </ListItemButton>
@@ -99,7 +105,7 @@ const Sidebar = () => {
                 {/* Recipe Management */}
                 <ListItemButton onClick={() => handleClick("mealPlanner")}>
                     <ListItemIcon>
-                        <FlatwareIcon />
+                        <FoodBankIcon />
                     </ListItemIcon>
                     <ListItemText primary="Meal Planner" />
                     {openSections.mealPlanner ? <ExpandLess /> : <ExpandMore />}
@@ -129,7 +135,7 @@ const Sidebar = () => {
                 {/* Time Management */}
                 <ListItemButton onClick={() => handleClick("toDoList")}>
                     <ListItemIcon>
-                        <CategoryIcon />
+                        <EventNoteIcon />
                     </ListItemIcon>
                     <ListItemText primary="To-Do List" />
                     {openSections.toDoList ? <ExpandLess /> : <ExpandMore />}
