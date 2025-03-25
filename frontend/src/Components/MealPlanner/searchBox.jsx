@@ -29,7 +29,7 @@ const SearchBox = () => {
 
     const handleSearch = () => {
         if (isAllEmpty) {
-            setOpenError(true); // Show error popup
+            setOpenError(true);
         } else {
             console.log("Searching with:", formData);
             // Implement search logic here
@@ -104,7 +104,7 @@ const SearchBox = () => {
                 open={openError} 
                 autoHideDuration={3000} 
                 onClose={() => setOpenError(false)}
-                anchorOrigin={{ vertical: 'top', horizontal: 'right' }} // Position Top-Right
+                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
             >
                 <Alert severity="error" onClose={() => setOpenError(false)}>
                     Please enter at least one value before searching!

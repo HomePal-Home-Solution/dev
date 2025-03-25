@@ -31,7 +31,7 @@ const Sidebar = () => {
     const handleClick = (section) => {
         setOpenSections((prev) => ({
             ...prev,
-            [section]: !prev[section] // Toggle only the clicked section
+            [section]: !prev[section]
         }));
     };
 
@@ -147,7 +147,7 @@ const Sidebar = () => {
                                 <ListItemIcon>
                                     <PostAddIcon />
                                 </ListItemIcon>
-                                <ListItemText primary="Ingredients" />
+                                <ListItemText primary="Tasks List" />
                             </ListItemButton>
                         </Link>
                     </List>
