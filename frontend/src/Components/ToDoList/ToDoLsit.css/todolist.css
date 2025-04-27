@@ -103,21 +103,23 @@
     border-radius: 4px;
     color: white;
     font-weight: bold;
+    width: 80px;
+    text-align: center;
     display: inline-block;
 }
 
 .priority.high {
-    background: red;
+    background: #ff0000;
     color: white;
 }
 
 .priority.medium {
-    background: yellow;
+    background: #f9e31a;
     color: black;
 }
 
 .priority.low {
-    background: purple;
+    background: #01a830;
     color: white;
 }
 
@@ -145,12 +147,12 @@
 }
 
 .edit-icon {
-    background-color: #ffc107; /* Yellow for edit */
+    background-color: #e9af01; /* Yellow for edit */
     color: white;
 }
 
 .edit-icon:hover {
-    background-color: #e0a800; /* Darker yellow */
+    background-color: #cd9a02; /* Darker yellow */
 }
 
 .delete-icon {
