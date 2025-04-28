@@ -61,33 +61,33 @@ const ToDoList = () => {
     setSearchTerm(e.target.value);
   };
 
-    // Download as PDF
-    const handleDownload = () => {
-      const doc = new jsPDF();
-      doc.text("To-Do List Report", 14, 20);
-  
-      const tableColumn = ["Title", "Description", "Due Date", "Priority", "Completed"];
-      const tableRows = [];
-  
-      tasks.forEach(task => {
-        const taskData = [
-          task.title,
-          task.description,
-          new Date(task.dueDate).toLocaleString(),
-          task.priority,
-          task.completed ? "Yes" : "No",
-        ];
-        tableRows.push(taskData);
-      });
-  
-      autoTable(doc, {
-        head: [tableColumn],
-        body: tableRows,
-        startY: 30,
-      });
-  
-      doc.save("ToDoList_Report.pdf");
-    };
+  // Download as PDF
+  const handleDownload = () => {
+    const doc = new jsPDF();
+    doc.text("To-Do List Report", 14, 20);
+
+    const tableColumn = ["Title", "Description", "Due Date", "Priority", "Completed"];
+    const tableRows = [];
+
+    tasks.forEach(task => {
+      const taskData = [
+        task.title,
+        task.description,
+        new Date(task.dueDate).toLocaleString(),
+        task.priority,
+        task.completed ? "Yes" : "No",
+      ];
+      tableRows.push(taskData);
+    });
+
+    autoTable(doc, {
+      head: [tableColumn],
+      body: tableRows,
+      startY: 30,
+    });
+
+    doc.save("ToDoList_Report.pdf");
+  };
 
   // Filter tasks based on search term
   const filteredTasks = tasks.filter((task) =>
