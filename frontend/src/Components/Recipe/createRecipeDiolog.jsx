@@ -7,6 +7,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
+import Alert from '@mui/material/Alert';
 
 const CreateRecipe = ({ open, onClose }) => {
     const [formData, setFormData] = React.useState({
@@ -19,27 +20,22 @@ const CreateRecipe = ({ open, onClose }) => {
     });
 
     const [errors, setErrors] = React.useState({});
+    const [successMessage, setSuccessMessage] = React.useState('');
 
-    // Regex for allowed characters (letters, numbers, spaces only)
     const nameRegex = /^[A-Za-z0-9\s]*$/;
 
-    // Handle input change
     const handleChange = (e) => {
         const { name, value } = e.target;
 
-        // Restrict symbols for name and ingredients
         if ((name === "name" || name === "ingredients") && !nameRegex.test(value)) {
             setErrors((prev) => ({ ...prev, [name]: "Symbols are not allowed" }));
-            return; // Prevent invalid input
+            return;
         }
 
         setFormData((prev) => ({ ...prev, [name]: value }));
-
-        // Clear error when user starts typing correctly
         setErrors((prev) => ({ ...prev, [name]: "" }));
     };
 
-    // Validate fields before submission
     const validateForm = () => {
         let newErrors = {};
         Object.keys(formData).forEach((key) => {
@@ -52,11 +48,14 @@ const CreateRecipe = ({ open, onClose }) => {
         return Object.keys(newErrors).length === 0;
     };
 
-    // Handle save button click
     const handleSave = () => {
         if (validateForm()) {
             console.log("Recipe Created:", formData);
-            onClose(); // Close the dialog
+            setSuccessMessage('Recipe successfully created!');
+            setTimeout(() => {
+                setSuccessMessage('');
+                onClose();
+            }, 2000);
         }
     };
 
@@ -64,6 +63,7 @@ const CreateRecipe = ({ open, onClose }) => {
         <Dialog open={open} onClose={onClose} aria-labelledby="create-recipe-dialog">
             <DialogTitle id="create-recipe-dialog">Create New Recipe</DialogTitle>
             <DialogContent>
+                {successMessage && <Alert severity="success">{successMessage}</Alert>}
                 <TextField 
                     autoFocus 
                     margin="dense" 
@@ -90,7 +90,6 @@ const CreateRecipe = ({ open, onClose }) => {
                     helperText={errors.ingredients}
                 />
 
-                {/* Row for Calories & Proteins */}
                 <Grid container spacing={2}>
                     <Grid item xs={6}>
                         <TextField 
@@ -124,7 +123,6 @@ const CreateRecipe = ({ open, onClose }) => {
                     </Grid>
                 </Grid>
 
-                {/* Row for Carbs & Fats */}
                 <Grid container spacing={2}>
                     <Grid item xs={6}>
                         <TextField 
@@ -164,7 +162,7 @@ const CreateRecipe = ({ open, onClose }) => {
                     variant="contained" 
                     color="primary" 
                     onClick={handleSave} 
-                    disabled={!Object.values(formData).every(value => value !== '')}
+                    // disabled={!Object.values(formData).every(value => value !== '')}
                 >
                     Save Recipe
                 </Button>
