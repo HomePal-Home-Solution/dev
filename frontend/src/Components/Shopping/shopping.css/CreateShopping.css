@@ -1,12 +1,11 @@
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #fef9e7; /* Soft yellow background */
+  background-color: #fef9e7;
   color: #333;
   margin: 0;
   padding: 0;
 }
 
-/* Container for the page */
 .container {
   max-width: 1200px;
   margin: 50px auto;
@@ -16,18 +15,16 @@ body {
   box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
 }
 
-/* Heading styles */
 .heading {
   font-size: 32px;
   font-weight: bold;
-  color: #16a085; /* Teal color */
+  color: #16a085;
   text-align: center;
   margin-bottom: 20px;
 }
 
-/* Form styles */
 .form {
-  background: rgb(113, 201, 206); /* Match header background color */
+  background: rgb(113, 201, 206);
   padding: 40px;
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
@@ -48,15 +45,14 @@ body {
 }
 
 .input:focus, .select:focus, .textarea:focus {
-  border-color: #f39c12; /* Orange accent */
+  border-color: #f39c12;
   background-color: #ffffff;
   box-shadow: 0 0 12px rgba(243, 156, 18, 0.5);
   outline: none;
 }
 
-/* Button Styles */
 .btn-add {
-  background-color: #f39c12; /* Orange for submit button */
+  background-color: #f39c12;
   color: white;
   padding: 16px 36px;
   font-size: 18px;
@@ -74,7 +70,7 @@ body {
 }
 
 .btn-report {
-  background-color: #16a085; /* Teal to match heading */
+  background-color: #16a085;
   color: white;
   padding: 16px 36px;
   font-size: 18px;
@@ -93,7 +89,7 @@ body {
 }
 
 .btn-update {
-  background-color: #27ae60; /* Green for update button */
+  background-color: #27ae60;
   color: white;
   padding: 12px 24px;
   font-size: 16px;
@@ -112,7 +108,7 @@ body {
 }
 
 .btn-delete {
-  background-color: #c0392b; /* Red for delete button */
+  background-color: #c0392b;
   color: white;
   padding: 12px 24px;
   font-size: 16px;
@@ -129,20 +125,17 @@ body {
   box-shadow: 0 8px 30px rgba(192, 57, 43, 0.7);
 }
 
-/* Search Container */
 .search-container {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
 }
 
-/* Report Container */
 .report-container {
   text-align: center;
   margin-bottom: 20px;
 }
 
-/* Table Styles */
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -153,7 +146,7 @@ body {
 }
 
 .table-header {
-  background-color: rgb(113, 201, 206); /* Match header color */
+  background-color: rgb(113, 201, 206);
   color: white;
 }
 
@@ -168,7 +161,7 @@ body {
 }
 
 .table-row:hover {
-  background-color: #fff9db; /* Light yellow hover */
+  background-color: #fff9db;
 }
 
 .table-cell {
@@ -177,19 +170,19 @@ body {
   border-bottom: 1px solid #ddd;
 }
 
-/* Priority Colors */
+/* Priority Colors (as per your new requirement) */
 .priority-high {
-  color: #c0392b; /* Red for high priority */
+  color: #c0392b; /* Red */
   font-weight: bold;
 }
 
 .priority-medium {
-  color: #f39c12; /* Orange for medium priority */
+  color: #27ae60; /* Green */
   font-weight: bold;
 }
 
 .priority-low {
-  color: #27ae60; /* Green for low priority */
+  color: #f1c40f; /* Yellow */
   font-weight: bold;
 }
 
@@ -208,4 +201,4 @@ body {
 .hot-toast-error {
   background-color: #c0392b !important;
   color: white !important;
-} 
+}

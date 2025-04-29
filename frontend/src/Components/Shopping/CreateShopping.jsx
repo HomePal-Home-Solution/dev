@@ -88,7 +88,7 @@ const CreateShopping = () => {
           item.quantity,
           item.unit,
           item.category,
-          item.priority,
+          item.priority.charAt(0).toUpperCase() + item.priority.slice(1),
           item.description
         ]),
         theme: 'striped',
@@ -156,8 +156,6 @@ const CreateShopping = () => {
         />
       </div>
 
-     
-
       <h2 className="heading">Shopping List</h2>
       <table className="table">
         <thead>
@@ -178,7 +176,7 @@ const CreateShopping = () => {
               <td className="table-cell">{item.category}</td>
               <td className="table-cell">{item.description}</td>
               <td className={`table-cell priority-${item.priority}`}>
-                {item.priority}
+                {item.priority.charAt(0).toUpperCase() + item.priority.slice(1)}
               </td>
               <td className="table-cell">
                 <button onClick={() => navigate(`/create-shopping/update/${item._id}`)} className="btn-update">Update</button>
