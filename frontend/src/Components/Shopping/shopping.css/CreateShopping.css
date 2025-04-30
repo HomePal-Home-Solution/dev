@@ -1,0 +1,204 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fef9e7;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+}
+
+.heading {
+  font-size: 32px;
+  font-weight: bold;
+  color: #16a085;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form {
+  background: rgb(113, 201, 206);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+.input, .select, .textarea {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fff5e6;
+  font-size: 16px;
+  color: #333;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.input:focus, .select:focus, .textarea:focus {
+  border-color: #f39c12;
+  background-color: #ffffff;
+  box-shadow: 0 0 12px rgba(243, 156, 18, 0.5);
+  outline: none;
+}
+
+.btn-add {
+  background-color: #f39c12;
+  color: white;
+  padding: 16px 36px;
+  font-size: 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.4s ease, background-color 0.4s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(243, 156, 18, 0.5);
+}
+
+.btn-add:hover {
+  background-color: #e67e22;
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(243, 156, 18, 0.7);
+}
+
+.btn-report {
+  background-color: #16a085;
+  color: white;
+  padding: 16px 36px;
+  font-size: 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.4s ease, background-color 0.4s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(22, 160, 133, 0.5);
+  margin: 20px 0;
+}
+
+.btn-report:hover {
+  background-color: #117864;
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(22, 160, 133, 0.7);
+}
+
+.btn-update {
+  background-color: #27ae60;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.4s ease, background-color 0.4s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(39, 174, 96, 0.5);
+  margin-right: 10px;
+}
+
+.btn-update:hover {
+  background-color: #218c54;
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(39, 174, 96, 0.7);
+}
+
+.btn-delete {
+  background-color: #c0392b;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.4s ease, background-color 0.4s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(192, 57, 43, 0.5);
+}
+
+.btn-delete:hover {
+  background-color: #a93226;
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(192, 57, 43, 0.7);
+}
+
+.search-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.report-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.table-header {
+  background-color: rgb(113, 201, 206);
+  color: white;
+}
+
+.table-header th {
+  padding: 16px;
+  font-size: 18px;
+  text-align: left;
+}
+
+.table-row {
+  transition: background-color 0.3s ease;
+}
+
+.table-row:hover {
+  background-color: #fff9db;
+}
+
+.table-cell {
+  padding: 16px;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Priority Colors (as per your new requirement) */
+.priority-high {
+  color: #c0392b; /* Red */
+  font-weight: bold;
+}
+
+.priority-medium {
+  color: #27ae60; /* Green */
+  font-weight: bold;
+}
+
+.priority-low {
+  color: #f1c40f; /* Yellow */
+  font-weight: bold;
+}
+
+/* Optional Toast Styling */
+.hot-toast {
+  font-family: 'Arial', sans-serif;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hot-toast-success {
+  background-color: #27ae60 !important;
+  color: white !important;
+}
+
+.hot-toast-error {
+  background-color: #c0392b !important;
+  color: white !important;
+}

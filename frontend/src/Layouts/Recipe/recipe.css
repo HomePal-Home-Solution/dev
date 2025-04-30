@@ -1,0 +1,41 @@
+
+.recipe-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.recipe-title .meal-planner-title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.recipe-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-recipe-btn {
+    margin-left: 60px !important;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    height: 50px;
+    font-size: 1.1rem !important;
+}
+
+.recipe-search-bar {
+    margin-right: 60px !important;
+    width: 280px;
+    border: none;
+}
+
+.recipe-list {
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+}

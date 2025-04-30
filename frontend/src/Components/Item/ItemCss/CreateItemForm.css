@@ -1,0 +1,125 @@
+body {
+    background-image: url('/assets/itemImages/background-image1.jpeg'); /* Path to your image */
+    background-size: cover; /* Cover the entire page */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating */
+    background-attachment: fixed; /* Fix the background while scrolling */
+    min-height: 100vh; /* Ensure the background covers the full viewport height */
+    margin: 0;
+    padding: 0;
+    position: relative; /* Needed for the overlay */
+    opacity: 1;
+}
+
+/* Add a dark overlay on top of the background image */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background-color: rgba(0, 0, 0, 0.5); */  /*this is cause for change every layout bacground color*/
+    z-index: -1; /* Place the overlay behind the content */
+}
+
+.create-item-form {
+    max-width: 600px;
+    margin: 50px auto 50px 200px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    position: relative; /* Ensure the form is above the overlay */
+    z-index: 1; /* Bring the form to the front */
+}
+
+.create-item-form .form-group {
+    margin-bottom: 20px;
+}
+
+.create-item-form .form-group label {
+    display: block;
+    text-align: left;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.create-item-form input,
+.create-item-form textarea,
+.create-item-form select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent input fields */
+}
+
+.create-item-form input:focus,
+.create-item-form textarea:focus,
+.create-item-form select:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.3);
+    outline: none;
+}
+
+.create-item-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.create-item-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.create-item-form button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.create-item-form button:active {
+    transform: translateY(0);
+}
+
+.error {
+    color: #dc3545;
+    text-align: center;
+    font-size: 0.9rem;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: rgba(248, 215, 218, 0.9); /* Slightly transparent error background */
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+}
+
+.success {
+    color: #28a745;
+    text-align: center;
+    font-size: 0.9rem;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: rgba(212, 237, 218, 0.9); /* Slightly transparent success background */
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 0.25em;
+}

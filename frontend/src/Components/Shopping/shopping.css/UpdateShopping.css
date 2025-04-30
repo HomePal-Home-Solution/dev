@@ -1,0 +1,108 @@
+/* Container for the entire page*/
+.update-shopping-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Heading */
+.heading {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-align: center;
+  color: #16a085; /* Teal color */
+}
+
+/* Form container */
+.form-container {
+  background: rgb(113, 201, 206); /* Match Create Shopping Form background color */
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+/* General input field styling */
+.input-field, .select-field, .textarea-field {
+  border: 1px solid #d1d5db;
+  padding: 16px;
+  width: 100%;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  background-color: #fff5e6; /* Soft light background */
+  font-size: 16px;
+  color: #333;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.input-field:focus, .select-field:focus, .textarea-field:focus {
+  border-color: #f39c12; /* Orange accent */
+  background-color: #ffffff;
+  box-shadow: 0 0 12px rgba(243, 156, 18, 0.5);
+  outline: none;
+}
+
+/* Disabled input fields */
+.input-field:disabled {
+  background-color: #e5e7eb;
+  cursor: not-allowed;
+}
+
+/* Textarea specific styles */
+.textarea-field {
+  height: 120px;
+  resize: vertical;
+}
+
+/* Button container */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Submit button */
+.submit-button {
+  background-color: #f39c12; /* Orange for submit button */
+  color: white;
+  padding: 16px 36px;
+  font-size: 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.4s ease, background-color 0.4s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(243, 156, 18, 0.5);
+}
+
+.submit-button:hover {
+  background-color: #e67e22;
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(243, 156, 18, 0.7);
+}
+
+/* Back button */
+.back-button {
+  background-color: #6b7280; /* Gray for back button */
+  color: white;
+  padding: 16px 36px;
+  font-size: 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.4s ease, background-color 0.4s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(108, 117, 125, 0.5);
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(108, 117, 125, 0.7);
+}
+
+/* Loading text */
+.loading {
+  text-align: center;
+  font-size: 1.25rem;
+  margin-top: 20px;
+}
