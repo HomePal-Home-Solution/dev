@@ -4,6 +4,7 @@ import {
   Button, Typography, Box, Divider
 } from '@mui/material';
 
+
 const MealOpenDialog = ({ open, onClose, meal }) => {
   return (
     <Dialog open={open} onClose={onClose} aria-labelledby="meal-view-dialog" maxWidth="sm" fullWidth>

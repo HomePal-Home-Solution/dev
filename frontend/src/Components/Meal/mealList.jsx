@@ -9,6 +9,7 @@ import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutli
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import MealOpenDialog from './mealOpenDialog';
 import axios from 'axios';
+import UpdateMealDialog from './updateMealDialog';
 
 export default function MealList() {
   const [meals, setMeals] = React.useState([]);
@@ -16,6 +17,7 @@ export default function MealList() {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [openViewDialog, setOpenViewDialog] = React.useState(false);
   const [selectedMeal, setSelectedMeal] = React.useState(null);
+  const [openEditDialog, setOpenEditDialog] = React.useState(false);
 
   React.useEffect(() => {
     fetchMeals();
@@ -30,6 +32,10 @@ export default function MealList() {
     }
   };
 
+  const handleEditClick = (meal) => {
+    setSelectedMeal(meal);
+    setOpenEditDialog(true);
+  };
   const handleViewClick = (meal) => {
     setSelectedMeal(meal);
     setOpenViewDialog(true);
@@ -45,6 +51,7 @@ export default function MealList() {
       console.error('Failed to delete meal:', error.message);
     }
   };
+
 
   const visibleRows = React.useMemo(
     () => meals.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage),
@@ -115,6 +122,13 @@ export default function MealList() {
         open={openViewDialog}
         onClose={() => setOpenViewDialog(false)}
         meal={selectedMeal}
+      />
+
+      <UpdateMealDialog
+        open={openEditDialog}
+        onClose={() => setOpenEditDialog(false)}
+        meal={selectedMeal}
+        onUpdate={fetchMeals}
       />
     </Box>
   );
