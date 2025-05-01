@@ -7,13 +7,15 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-
+import MealOpenDialog from './mealOpenDialog';
 import axios from 'axios';
 
 export default function MealList() {
   const [meals, setMeals] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [openViewDialog, setOpenViewDialog] = React.useState(false);
+  const [selectedMeal, setSelectedMeal] = React.useState(null);
 
   React.useEffect(() => {
     fetchMeals();
@@ -25,6 +27,22 @@ export default function MealList() {
       setMeals(res.data.data);
     } catch (err) {
       console.error('Failed to fetch meals:', err.message);
+    }
+  };
+
+  const handleViewClick = (meal) => {
+    setSelectedMeal(meal);
+    setOpenViewDialog(true);
+  };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this meal?')) return;
+  
+    try {
+      await axios.delete(`/api/meals/${id}`);
+      setMeals((prevMeals) => prevMeals.filter((meal) => meal._id !== id));
+    } catch (error) {
+      console.error('Failed to delete meal:', error.message);
     }
   };
 
@@ -93,9 +111,11 @@ export default function MealList() {
         />
       </Paper>
 
-      {/* Dialogs */}
-      {/* <UpdateMealDialog open={openDialog} onClose={() => setOpenDialog(false)} meal={selectedMeal} />
-      <MealOpenDialog open={openViewDialog} onClose={() => setOpenViewDialog(false)} meal={selectedMealForView} /> */}
+      <MealOpenDialog
+        open={openViewDialog}
+        onClose={() => setOpenViewDialog(false)}
+        meal={selectedMeal}
+      />
     </Box>
   );
 }
