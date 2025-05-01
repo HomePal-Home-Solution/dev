@@ -129,6 +129,15 @@ const Sidebar = () => {
                                 <ListItemText primary="Meal Planner" />
                             </ListItemButton>
                         </Link>
+
+                        <Link to="/meal" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <ListItemButton sx={{ pl: 4 }}>
+                                <ListItemIcon>
+                                    <RestaurantIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Meal" />
+                            </ListItemButton>
+                        </Link>
                     </List>
                 </Collapse>
 

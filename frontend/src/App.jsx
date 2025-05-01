@@ -5,6 +5,7 @@ import Header from './Components/Header';
 import Sidebar from './Components/Sidebar';
 import Dashboard from './Layouts/Dashboard';
 import Recipe from './Layouts/Recipe/Recipe.jsx';
+import Meal from './Layouts/Meal/Meal.jsx';
 import MealPlanner from './Layouts/Recipe/MealPlanner.jsx';
 import ItemsDisplay from './Components/Item/ItemsDisplay';
 import CreateItemForm from './Components/Item/CreateItemForm';
@@ -41,6 +42,8 @@ function AppContent() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/recipe" element={<Recipe />} />
             <Route path="/mealPlanner" element={<MealPlanner />} />
+            <Route path="/meal" element={<Meal />} />
+
               
             <Route path="/allitem" element={<ItemsDisplay />} />
             <Route path="/createitem" element={<CreateItemForm />} />
