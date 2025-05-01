@@ -58,18 +58,18 @@ const ViewItemPage = () => {
     }
 
     return (
-        <div className="view-item-container">
+        <div className="view-item-container" style={{ backgroundColor: '#B0C4DE', padding: '10px', margin: '50px 150px', height: 'auto', borderRadius: '8px' }}>
             <h1>Item Details</h1>
             {item && (
                 <div className="item-details">
-                    <div className="item-image">
-                    <img src={`data:image/png;base64,${item.ItemImage}`} alt={item.ItemName} className="item-image" />
+                    <div className="item-image img">
+                    <img src={`data:image/png;base64,${item.ItemImage}`} alt={item.ItemName} className="item-image img" style={{ maxWidth: "100%", height: "auto", borderRadius: "4px", marginBottom: "10px" }} />
                     </div>
                     <div className="item-info">
                         <h2>{item.ItemName}</h2>
                         <p><strong>Brand:</strong> {item.ItemBrand}</p>
                         <p><strong>Description:</strong> {item.ItemDescription}</p>
-                        <p><strong>Price:</strong> ${item.ItemPrice}</p>
+                        <p><strong>Price LKR:</strong> {item.ItemPrice}</p>
                         <p><strong>Category:</strong> {item.ItemCategory}</p>
                         <p><strong>Quantity:</strong> {item.ItemQuantity}</p>
                         <p><strong>Status:</strong> {item.ItemStatus}</p>
