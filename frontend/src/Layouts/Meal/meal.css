@@ -16,3 +16,25 @@
     margin-right: 50px;
     margin-bottom: 50px;
 }
+
+.meal-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-meal-btn {
+    margin-left: 60px !important;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    height: 50px;
+    font-size: 1.1rem !important;
+}
+
+.meal-search-bar {
+    margin-right: 60px !important;
+    width: 280px;
+    border: none;
+}

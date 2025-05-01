@@ -25,7 +25,7 @@ const Meal = () => {
 
             <div className="meal-actions">
                 <Button variant="contained" color="primary" className="add-meal-btn" onClick={handleOpenDialog}>
-                    Add Recipe
+                    Add Meal
                 </Button>
                 <TextField 
                     id="outlined-basic" 
