@@ -1,117 +1,110 @@
 import * as React from 'react';
 import './mealPlanner.css';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
+import {
+  TextField, Button, Grid, Snackbar, Alert, MenuItem
+} from '@mui/material';
 
-const SearchBox = () => {
-    const [formData, setFormData] = React.useState({
-        calories: '',
-        fat: '',
-        carbs: '',
-        proteins: ''
-    });
+const SearchBox = ({ onSearch }) => {
+  const [formData, setFormData] = React.useState({
+    type: '',
+    calories: '',
+    sugar: '',
+    fat: ''
+  });
 
-    const [openError, setOpenError] = React.useState(false); // Snackbar state
+  const [openError, setOpenError] = React.useState(false);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
-    // Check if all fields are empty
-    const isAllEmpty = Object.values(formData).every(value => value === '');
+  const isAllEmpty = Object.values(formData).every(value => value === '');
 
-    const handleSearch = () => {
-        if (isAllEmpty) {
-            setOpenError(true);
-        } else {
-            console.log("Searching with:", formData);
-            // Implement search logic here
-        }
-    };
+  const handleSearch = () => {
+    if (isAllEmpty) {
+      setOpenError(true);
+    } else {
+      onSearch(formData); // Send data to parent
+    }
+  };
 
-    return (
-        <div className="search-box">
-            <Grid container spacing={2} alignItems="center">
-                <Grid item xs={2.4}>
-                    <TextField 
-                        label="Calories" 
-                        variant="outlined" 
-                        fullWidth
-                        type="number" 
-                        name="calories"
-                        value={formData.calories}
-                        onChange={handleChange}
-                        inputProps={{ min: 0 }} 
-                    />
-                </Grid>
-                <Grid item xs={2.4}>
-                    <TextField 
-                        label="Fat" 
-                        variant="outlined" 
-                        fullWidth
-                        type="number" 
-                        name="fat"
-                        value={formData.fat}
-                        onChange={handleChange}
-                        inputProps={{ min: 0 }} 
-                    />
-                </Grid>
-                <Grid item xs={2.4}>
-                    <TextField 
-                        label="Carbs" 
-                        variant="outlined" 
-                        fullWidth 
-                        type="number" 
-                        name="carbs"
-                        value={formData.carbs}
-                        onChange={handleChange}
-                        inputProps={{ min: 0 }} 
-                    />
-                </Grid>
-                <Grid item xs={2.4}>
-                    <TextField 
-                        label="Proteins" 
-                        variant="outlined" 
-                        fullWidth 
-                        type="number" 
-                        name="proteins"
-                        value={formData.proteins}
-                        onChange={handleChange}
-                        inputProps={{ min: 0 }} 
-                    />
-                </Grid>
-                <Grid item xs={2.4} className="search-btn-container">
-                    <Button 
-                        variant="contained" 
-                        color="primary" 
-                        fullWidth
-                        onClick={handleSearch}
-                    >
-                        Search
-                    </Button>
-                </Grid>
-            </Grid>
+  return (
+    <div className="search-box">
+      <Grid container spacing={2}>
+        <Grid item xs={3}>
+          <TextField
+            select
+            label="Meal Type"
+            name="type"
+            value={formData.type}
+            onChange={handleChange}
+            fullWidth
+          >
+            <MenuItem value="breakfast">Breakfast</MenuItem>
+            <MenuItem value="lunch">Lunch</MenuItem>
+            <MenuItem value="dinner">Dinner</MenuItem>
+            <MenuItem value="snack">Snack</MenuItem>
+          </TextField>
+        </Grid>
+        <Grid item xs={3}>
+          <TextField
+            label="Calories (max)"
+            name="calories"
+            type="number"
+            value={formData.calories}
+            onChange={handleChange}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={3}>
+          <TextField
+            select
+            label="Sugar"
+            name="sugar"
+            value={formData.sugar}
+            onChange={handleChange}
+            fullWidth
+          >
+            <MenuItem value="low">Low</MenuItem>
+            <MenuItem value="normal">Normal</MenuItem>
+          </TextField>
+        </Grid>
+        <Grid item xs={3}>
+          <TextField
+            select
+            label="Fat"
+            name="fat"
+            value={formData.fat}
+            onChange={handleChange}
+            fullWidth
+          >
+            <MenuItem value="low">Low</MenuItem>
+            <MenuItem value="normal">Normal</MenuItem>
+          </TextField>
+        </Grid>
+        <Grid item xs={12}>
+          <Button variant="contained" fullWidth onClick={handleSearch}>
+            Search
+          </Button>
+        </Grid>
+      </Grid>
 
-            {/* Error Snackbar - Positioned Top-Right */}
-            <Snackbar 
-                open={openError} 
-                autoHideDuration={3000} 
-                onClose={() => setOpenError(false)}
-                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-            >
-                <Alert severity="error" onClose={() => setOpenError(false)}>
-                    Please enter at least one value before searching!
-                </Alert>
-            </Snackbar>
-        </div>
-    );
+      <Snackbar
+        open={openError}
+        autoHideDuration={3000}
+        onClose={() => setOpenError(false)}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      >
+        <Alert severity="error" onClose={() => setOpenError(false)}>
+          Please fill at least one field before searching.
+        </Alert>
+      </Snackbar>
+    </div>
+  );
 };
 
 export default SearchBox;
