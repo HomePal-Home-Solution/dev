@@ -79,7 +79,7 @@ const ItemsDisplay = () => {
   };
 
   return (
-    <div className="container">
+    <div className="item-container">
       <h2 style={{ textAlign: "left", marginRight: "230px", color: "Blue" }}>All Items In My Home</h2>
       
 
@@ -103,10 +103,10 @@ const ItemsDisplay = () => {
 
       {outOfStockItems.length > 0 && (
         <div className="out-of-stock-notification">
-          <h4>Out of Stock Items: {outOfStockItems.length}</h4>
+          <h4 className="notification-text">Out of Stock Items: {outOfStockItems.length}</h4>
           {outOfStockItems.map((item) => (
-            <div key={item._id} className="notification-item">
-              <span className="notification-text">
+            <div key={item._id} className="notification-item" style={{ color: "red", fontWeight: "bold", textAlign:"center" }}>
+              <span className="notification-text" style={{ color: "red", fontWeight: "bold", textAlign:"center" }}>
                 {item.ItemName} is out of stock. Please fill the stock.
               </span>
             </div>
@@ -114,7 +114,7 @@ const ItemsDisplay = () => {
         </div>
       )}
 
-      <table>
+      <table className="item-table">
         <thead>
           <tr>
             <th>Image</th>

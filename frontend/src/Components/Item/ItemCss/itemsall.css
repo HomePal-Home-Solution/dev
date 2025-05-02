@@ -1,7 +1,10 @@
-.container {
-  width: 90%;
+.item-container {
+  max-width: 100%;
   margin: auto;
-  text-align: center;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
@@ -9,11 +12,10 @@ h2 {
   margin-bottom: 20px;
 }
 
-table {
-  width: 850px;
+.item-table {
+  width: 100%;
   border-collapse: collapse;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  background: #fff;
+  margin-bottom: 20px;
 }
 
 th, td {
@@ -84,7 +86,7 @@ padding: 15px;
 background-color: #f9f9f9;
 border-radius: 8px;
 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-width: 850px;
+width: 100%;
 }
 
 .total-items h3,
@@ -107,6 +109,7 @@ color: #007bff; /* Blue color for total price */
 display: flex;
 justify-content: right;
 margin: 20px 0;
+width: 100%;
 }
 
 /* .search-bar input {
@@ -123,11 +126,11 @@ transition: border-color 0.3s ease, box-shadow 0.3s ease;
 display: flex;
 justify-content: flex-start; /* Changed from 'right' to 'flex-start' to align left */
 margin: 10px 0 20px 0; /* Reduced top margin to move it up */
-width: 900px;
+width: 100%;
 }
 
 .search-bar input {
-width: 850px; /* Fixed width instead of percentage */
+width: 100%; /* Fixed width instead of percentage */
 padding: 10px 15px;
 border: 2px solid #ddd;
 border-radius: 8px;
@@ -176,7 +179,7 @@ padding: 10px;
 background-color: #ffebee; /* Light red background */
 border: 1px solid #ffcdd2; /* Light red border */
 border-radius: 5px;
-width: 850px;
+width: 100%;
 }
 
 .notification-item {
@@ -186,6 +189,10 @@ margin: 5px 0;
 .notification-text {
 color: #c62828; /* Dark red text */
 font-weight: bold;
+font-size: 18px;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-style: italic;
+text-align: center;
 }
 
 /* Button Container */
