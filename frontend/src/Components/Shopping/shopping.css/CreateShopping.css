@@ -23,18 +23,35 @@ body {
   margin-bottom: 20px;
 }
 
+/* --- Improved Form Styles --- */
 .form {
   background: rgb(113, 201, 206);
-  padding: 40px;
+  padding: 32px 36px;
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  margin-bottom: 40px;
+  margin: 0 auto 40px auto;
+  max-width: 100%;
+  min-width: 350px;
+  width: 100%;
+}
+
+.form-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.form-group {
+  flex: 1 1 250px;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
 }
 
 .input, .select, .textarea {
   width: 100%;
-  padding: 16px;
-  margin-bottom: 18px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
   border-radius: 8px;
   border: 1px solid #ddd;
   background: #fff5e6;
@@ -51,23 +68,42 @@ body {
   outline: none;
 }
 
+.textarea {
+  min-height: 48px;
+  resize: vertical;
+}
+
 .btn-add {
   background-color: #f39c12;
   color: white;
-  padding: 16px 36px;
+  padding: 14px 34px;
   font-size: 18px;
   border-radius: 12px;
   cursor: pointer;
   border: none;
-  transition: transform 0.4s ease, background-color 0.4s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s, background-color 0.4s, box-shadow 0.3s;
   box-shadow: 0 6px 20px rgba(243, 156, 18, 0.5);
+  margin-top: 10px;
 }
 
 .btn-add:hover {
   background-color: #e67e22;
-  transform: scale(1.1);
+  transform: scale(1.07);
   box-shadow: 0 8px 30px rgba(243, 156, 18, 0.7);
 }
+
+@media (max-width: 900px) {
+  .form-fields {
+    flex-direction: column;
+    gap: 0;
+  }
+  .form {
+    padding: 18px 8px;
+    min-width: unset;
+    max-width: 98vw;
+  }
+}
+/* --- End Improved Form Styles --- */
 
 .btn-report {
   background-color: #16a085;
@@ -170,20 +206,60 @@ body {
   border-bottom: 1px solid #ddd;
 }
 
-/* Priority Colors (as per your new requirement) */
+/* Priority Colors */
 .priority-high {
-  color: #c0392b; /* Red */
+  color: #c0392b !important; /* Red */
   font-weight: bold;
 }
 
 .priority-medium {
-  color: #27ae60; /* Green */
+  color: #f1c40f !important; /* Yellow */
   font-weight: bold;
 }
 
 .priority-low {
-  color: #f1c40f; /* Yellow */
+  color: #27ae60 !important; /* Green */
   font-weight: bold;
+}
+
+/* Priority Legend */
+.priority-legend {
+  margin: 30px 0 10px 0;
+  text-align: center;
+  font-size: 18px;
+}
+
+.legend-label {
+  margin-right: 18px;
+  font-weight: bold;
+}
+
+.legend-box {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 8px;
+  margin: 0 8px;
+  font-weight: bold;
+  font-size: 16px;
+  border: 1px solid #ddd;
+}
+
+.priority-high.legend-box {
+  background: #f9e6e6;
+  color: #e32c17;
+  border-color: #c0392b;
+}
+
+.priority-medium.legend-box {
+  background: #fcf6e3;
+  color: #e6b906;
+  border-color: #f1c40f;
+}
+
+.priority-low.legend-box {
+  background: #e6f9ed;
+  color: #27dc72;
+  border-color: #27ae60;
 }
 
 /* Optional Toast Styling */
