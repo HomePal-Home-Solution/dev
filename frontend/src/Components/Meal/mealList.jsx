@@ -11,7 +11,7 @@ import MealOpenDialog from './mealOpenDialog';
 import axios from 'axios';
 import UpdateMealDialog from './updateMealDialog';
 
-export default function MealList() {
+export default function MealList({ searchQuery }) {  // Receive searchQuery as a prop
   const [meals, setMeals] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -52,10 +52,14 @@ export default function MealList() {
     }
   };
 
+  // Filter meals based on the search query received from Meal.jsx
+  const filteredMeals = meals.filter((meal) =>
+    meal.name.toLowerCase().includes(searchQuery.toLowerCase()) // Filter meals by name
+  );
 
   const visibleRows = React.useMemo(
-    () => meals.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage),
-    [meals, page, rowsPerPage]
+    () => filteredMeals.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage),
+    [filteredMeals, page, rowsPerPage]
   );
 
   return (
@@ -110,7 +114,7 @@ export default function MealList() {
         <TablePagination
           rowsPerPageOptions={[10, 25]}
           component="div"
-          count={meals.length}
+          count={filteredMeals.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={(event, newPage) => setPage(newPage)}

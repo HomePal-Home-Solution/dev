@@ -5,12 +5,13 @@ import {
 } from '@mui/material';
 
 const SearchBox = ({ onSearch }) => {
-  const [formData, setFormData] = React.useState({
-    type: '',
-    calories: '',
-    sugar: '',
-    fat: ''
-  });
+    const [formData, setFormData] = React.useState({
+        type: [], // <-- must be an array for multiple select
+        calories: '',
+        sugar: '',
+        fat: ''
+      });
+      
 
   const [openError, setOpenError] = React.useState(false);
 

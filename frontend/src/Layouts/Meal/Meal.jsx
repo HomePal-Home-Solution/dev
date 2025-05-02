@@ -7,7 +7,8 @@ import TextField from '@mui/material/TextField';
 
 const Meal = () => {
     const [openDialog, setOpenDialog] = React.useState(false);
-    
+    const [searchQuery, setSearchQuery] = React.useState('');
+
     const handleOpenDialog = () => {
         setOpenDialog(true);
     };
@@ -32,12 +33,14 @@ const Meal = () => {
                     label="Search Meal" 
                     variant="outlined" 
                     className="meal-search-bar"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)} // Handle search query change
                 />
             </div>
 
             {/* Meal List */}
             <div className="meal-list">
-                <MealList />
+                <MealList searchQuery={searchQuery} /> {/* Pass searchQuery to MealList */}
             </div>
 
             <CreateMeal open={openDialog} onClose={handleCloseDialog} />
