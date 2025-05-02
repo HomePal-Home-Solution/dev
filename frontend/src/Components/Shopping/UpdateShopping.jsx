@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../Shopping/shopping.css/UpdateShopping.css"; // Assuming you create this CSS file
+import toast, { Toaster } from "react-hot-toast";
+import "../Shopping/shopping.css/UpdateShopping.css";
 
 function UpdateShopping() {
   const { id } = useParams();
@@ -26,6 +27,7 @@ function UpdateShopping() {
       setFormData(response.data);
     } catch (error) {
       console.error("Error fetching item", error);
+      toast.error("Failed to fetch item");
     } finally {
       setIsLoading(false);
     }
@@ -39,9 +41,11 @@ function UpdateShopping() {
     e.preventDefault();
     try {
       await axios.put(`/api/shopping/update/${id}`, formData);
+      toast.success("Item updated successfully!");
       navigate("/create-shopping");
     } catch (error) {
       console.error("Error updating item", error);
+      toast.error("Failed to update item");
     }
   };
 
@@ -51,6 +55,15 @@ function UpdateShopping() {
 
   return (
     <div className="update-shopping-container">
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={{
+          className: 'hot-toast',
+          success: { className: 'hot-toast-success' },
+          error: { className: 'hot-toast-error' },
+        }}
+      />
       <h2 className="heading">Update Shopping Item</h2>
       <form onSubmit={handleSubmit} className="form-container">
         <input
@@ -59,7 +72,8 @@ function UpdateShopping() {
           placeholder="Item Name"
           value={formData.itemName}
           className="input-field"
-          disabled />
+          disabled
+        />
         <input
           type="number"
           name="quantity"
@@ -67,21 +81,24 @@ function UpdateShopping() {
           value={formData.quantity}
           onChange={handleChange}
           className="input-field"
-          required />
+          required
+        />
         <input
           type="text"
           name="unit"
           placeholder="Unit"
           value={formData.unit}
           className="input-field"
-          disabled />
+          disabled
+        />
         <input
           type="text"
           name="category"
           placeholder="Category"
           value={formData.category}
           className="input-field"
-          disabled />
+          disabled
+        />
         <select
           name="priority"
           value={formData.priority}
@@ -97,7 +114,8 @@ function UpdateShopping() {
           placeholder="Description"
           value={formData.description}
           onChange={handleChange}
-          className="textarea-field" />
+          className="textarea-field"
+        />
         <div className="button-container">
           <button type="submit" className="submit-button">Update Item</button>
           <button

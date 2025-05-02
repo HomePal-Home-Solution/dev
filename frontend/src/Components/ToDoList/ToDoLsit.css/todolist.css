@@ -40,6 +40,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    visibility: hidden;
 }
 
 .search-btn:hover {
@@ -103,27 +104,29 @@
     border-radius: 4px;
     color: white;
     font-weight: bold;
+    width: 80px;
+    text-align: center;
     display: inline-block;
 }
 
 .priority.high {
-    background: red;
+    background: #ff0000;
     color: white;
 }
 
 .priority.medium {
-    background: yellow;
+    background: #fde61c;
     color: black;
 }
 
 .priority.low {
-    background: purple;
+    background: #01a830;
     color: white;
 }
 
 /* Button styles for complete task */
 .complete-btn {
-    background: green;
+    background: #0d6efd;
     color: white;
     padding: 5px 10px;
     border: none;
@@ -132,7 +135,7 @@
 }
 
 .complete-btn:hover {
-    background: darkgreen;
+    background: #0b5ed7;
 }
 
 /* Edit and delete button styles */
@@ -140,26 +143,26 @@
     margin-left: 10px;
     cursor: pointer;
     border: none;
+    color: white;
     padding: 6px 10px;
     border-radius: 4px;
 }
 
 .edit-icon {
-    background-color: #ffc107; /* Yellow for edit */
+    background-color: #e9af01; 
     color: white;
 }
 
 .edit-icon:hover {
-    background-color: #e0a800; /* Darker yellow */
+    background-color: #cd9a02; 
 }
 
 .delete-icon {
-    background-color: #dc3545; /* Red for delete */
-    color: white;
+    background-color: #dc3545; 
 }
 
 .delete-icon:hover {
-    background-color: #c82333; /* Darker red */
+    background-color: #c82333; /
 }
 
 /* Hover effects for buttons */
@@ -173,4 +176,21 @@ button:hover {
     text-align: center;
     font-size: 18px;
     color: #888;
+}
+
+/* Download button */
+.download-btn {
+    background: #007bff; 
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 4px;
+}
+
+.download-btn:hover {
+    background: #0157b4; 
 }

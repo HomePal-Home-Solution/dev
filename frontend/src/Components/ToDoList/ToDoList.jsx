@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 import { useNavigate } from "react-router-dom";
-import '../ToDoList/ToDoLsit.css/todolist.css'; // Make sure the path is correct
+import '../ToDoList/ToDoLsit.css/todolist.css';
 
 const ToDoList = () => {
   const [tasks, setTasks] = useState([]); // State to store tasks
@@ -59,6 +61,34 @@ const ToDoList = () => {
     setSearchTerm(e.target.value);
   };
 
+  // Download as PDF
+  const handleDownload = () => {
+    const doc = new jsPDF();
+    doc.text("To-Do List Report", 14, 20);
+
+    const tableColumn = ["Title", "Description", "Due Date", "Priority", "Completed"];
+    const tableRows = [];
+
+    tasks.forEach(task => {
+      const taskData = [
+        task.title,
+        task.description,
+        new Date(task.dueDate).toLocaleString(),
+        task.priority,
+        task.completed ? "Yes" : "No",
+      ];
+      tableRows.push(taskData);
+    });
+
+    autoTable(doc, {
+      head: [tableColumn],
+      body: tableRows,
+      startY: 30,
+    });
+
+    doc.save("ToDoList_Report.pdf");
+  };
+
   // Filter tasks based on search term
   const filteredTasks = tasks.filter((task) =>
     task.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -77,6 +107,7 @@ const ToDoList = () => {
           onChange={handleSearchChange}
         />
         <button className="search-btn">Search</button>
+        <button className="download-btn" onClick={handleDownload}>Download</button>
       </div>
 
       <button className="add-btn" onClick={handleCreateTask}>Create Task</button>
@@ -116,7 +147,7 @@ const ToDoList = () => {
                     onClick={() => toggleComplete(task._id, task.completed)}
                     className="complete-btn"
                     style={{
-                      backgroundColor: task.completed ? "green" : "red",
+                      backgroundColor: task.completed ? "#0b5ed7" : "#198754",
                     }}
                   >
                     {task.completed ? "Completed" : "Mark as Complete"}
