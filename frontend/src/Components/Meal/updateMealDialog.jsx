@@ -17,7 +17,6 @@ const UpdateMealDialog = ({ open, onClose, meal, onUpdate }) => {
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState('');
 
-  // Pre-fill form data when dialog opens with a meal
   useEffect(() => {
     if (meal) {
       setFormData({
@@ -52,10 +51,10 @@ const UpdateMealDialog = ({ open, onClose, meal, onUpdate }) => {
     try {
       await axios.put(`/api/meals/${meal._id}`, formData);
       setSuccessMessage('Meal updated successfully!');
-      onUpdate(); // Notify parent to refresh list
+      onUpdate();
       setTimeout(() => {
         setSuccessMessage('');
-        onClose(); // Close after showing message
+        onClose();
       }, 1500);
     } catch (error) {
       console.error('Update failed:', error);
