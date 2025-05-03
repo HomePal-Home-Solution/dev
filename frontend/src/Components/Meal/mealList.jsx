@@ -66,7 +66,7 @@ export default function MealList({ searchQuery }) {
       <Paper sx={{ width: '100%', mb: 2 }}>
         <Toolbar>
           <Typography sx={{ flex: '1 1 100%', fontSize: '1.5rem', fontWeight: 'bold' }}>
-            Meals List
+            Recipes List
           </Typography>
           <Tooltip title="Filter list">
             <IconButton>
@@ -83,7 +83,7 @@ export default function MealList({ searchQuery }) {
                 <TableCell sx={{ fontSize: '1.2rem' }} align="center">Sugar</TableCell>
                 <TableCell sx={{ fontSize: '1.2rem' }} align="center">Fat</TableCell>
                 <TableCell sx={{ fontSize: '1.2rem' }} align="center">Type</TableCell>
-                <TableCell sx={{ fontSize: '1.2rem' }} align="center">Actions</TableCell>
+                <TableCell sx={{ fontSize: '1.2rem', width: '24%' }} align="center">Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

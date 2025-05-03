@@ -21,16 +21,16 @@ const Meal = () => {
         <div className="right-content">
             {/* Header Section */}
             <div className="meal-header">
-                <h1 className="meal-title">Meals Management</h1>
+                <h1 className="meal-title">Recipe Management</h1>
             </div>
 
             <div className="meal-actions">
                 <Button variant="contained" color="primary" className="add-meal-btn" onClick={handleOpenDialog}>
-                    Add Meal
+                    Add Recipe
                 </Button>
                 <TextField 
                     id="outlined-basic" 
-                    label="Search Meal" 
+                    label="Search Recipe" 
                     variant="outlined" 
                     className="meal-search-bar"
                     value={searchQuery}

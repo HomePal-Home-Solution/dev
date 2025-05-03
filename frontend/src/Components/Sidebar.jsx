@@ -93,12 +93,6 @@ const Sidebar = () => {
                             <ListItemText primary="Shopping List" />
                         </ListItemButton>
                     </Link>
-                        {/* <ListItemButton sx={{ pl: 4 }}>
-                            <ListItemIcon>
-                                <RestaurantIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Management" />
-                        </ListItemButton> */}
                     </List>
                 </Collapse>
 
@@ -112,7 +106,7 @@ const Sidebar = () => {
                 </ListItemButton>
                 <Collapse in={openSections.mealPlanner} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
-                        <Link to="/recipe" style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <Link to="/meal" style={{ textDecoration: 'none', color: 'inherit' }}>
                             <ListItemButton sx={{ pl: 4 }}>
                                 <ListItemIcon>
                                     <MenuBookIcon />
@@ -127,15 +121,6 @@ const Sidebar = () => {
                                     <RestaurantIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="Meal Planner" />
-                            </ListItemButton>
-                        </Link>
-
-                        <Link to="/meal" style={{ textDecoration: 'none', color: 'inherit' }}>
-                            <ListItemButton sx={{ pl: 4 }}>
-                                <ListItemIcon>
-                                    <RestaurantIcon />
-                                </ListItemIcon>
-                                <ListItemText primary="Meal" />
                             </ListItemButton>
                         </Link>
                     </List>
