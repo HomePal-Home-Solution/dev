@@ -63,50 +63,91 @@ const UpdateItem = () => {
     setFile(selectedFile); // Store the selected file
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   // Check for validation errors before submitting
+  //   if (errors.ItemPrice || errors.ItemQuantity) {
+  //     alert("Please fix the errors before submitting.");
+  //     return;
+  //   }
+
+
+  //   // Create a FormData object to send the file and other fields
+  //   const formData = new FormData();
+  //   formData.append('ItemName', item.ItemName);
+  //   if (file) {
+  //     formData.append('ItemImage', file); // Append the file if it exists
+  //   } else {
+  //     formData.append('ItemImage', item.ItemImage); // Use the existing image if no new file is uploaded
+  //   }
+  //   formData.append('ItemBrand', item.ItemBrand);
+  //   formData.append('ItemDescription', item.ItemDescription);
+  //   formData.append('ItemPrice', item.ItemPrice);
+  //   formData.append('ItemCategory', item.ItemCategory);
+  //   formData.append('ItemQuantity', item.ItemQuantity);
+  //   formData.append('ItemStatus', item.ItemStatus);
+
+  //   try {
+  //     const response = await axios.put(`http://localhost:5000/api/items/updateitem/${id}`, formData, {
+  //       headers: {
+  //         'Content-Type': 'multipart/form-data', // Set the content type for file upload
+  //       },
+  //     });
+
+  //     if (response.status === 200) {
+  //       alert("Item updated successfully!");
+  //       navigate("/allitem");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error updating item:", error);
+  //     alert("Failed to update item. Please try again.");
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check for validation errors before submitting
+    // Check for validation errors
     if (errors.ItemPrice || errors.ItemQuantity) {
-      alert("Please fix the errors before submitting.");
-      return;
+        alert("Please fix the errors before submitting.");
+        return;
     }
 
-
-    // Create a FormData object to send the file and other fields
     const formData = new FormData();
     formData.append('ItemName', item.ItemName);
-    if (file) {
-      formData.append('ItemImage', file); // Append the file if it exists
-    } else {
-      formData.append('ItemImage', item.ItemImage); // Use the existing image if no new file is uploaded
-    }
     formData.append('ItemBrand', item.ItemBrand);
     formData.append('ItemDescription', item.ItemDescription);
     formData.append('ItemPrice', item.ItemPrice);
     formData.append('ItemCategory', item.ItemCategory);
     formData.append('ItemQuantity', item.ItemQuantity);
     formData.append('ItemStatus', item.ItemStatus);
+    
+    // Only append file if it exists
+    if (file) {
+        formData.append('ItemImage', file);
+    }
 
     try {
-      const response = await axios.put(`http://localhost:5000/api/items/updateitem/${id}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data', // Set the content type for file upload
-        },
-      });
+        const response = await axios.put(`http://localhost:5000/api/items/updateitem/${id}`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
 
-      if (response.status === 200) {
-        alert("Item updated successfully!");
-        navigate("/");
-      }
+        if (response.status === 200) {
+            alert("Item updated successfully!");
+            navigate("/allitem");
+        }
     } catch (error) {
-      console.error("Error updating item:", error);
-      alert("Failed to update item. Please try again.");
+        console.error("Error updating item:", error);
+        alert(`Failed to update item: ${error.response?.data?.message || error.message}`);
     }
-  };
+};
 
   return (
-    <div className="update-item-container">
+    <div className="update-item-container" style={{ backgroundColor: '#B0C4DE', padding: '20px', margin: '50px 150px',}}>
+      
       <h2>Update Item</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -158,7 +199,7 @@ const UpdateItem = () => {
           />
         </div>
         <div className="form-group">
-          <label>Price:</label>
+          <label>Price LKR:</label>
           <input
             type="number"
             name="ItemPrice"

@@ -8,23 +8,21 @@ import autoTable from 'jspdf-autotable';
 const ItemsDisplay = () => {
   const [items, setItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [totalItems, setTotalItems] = useState(0); // State to store the total number of items
-  const [searchQuery, setSearchQuery] = useState(""); // State to store the search query
-  const [outOfStockItems, setOutOfStockItems] = useState([]); // State to store out-of-stock items
+  const [totalItems, setTotalItems] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [outOfStockItems, setOutOfStockItems] = useState([]);
 
   useEffect(() => {
     fetchItems();
   }, []);
 
   useEffect(() => {
-    // Calculate the total price whenever items change
     const sum = items.reduce((acc, item) => acc + (item.ItemPrice * item.ItemQuantity), 0);
     setTotalPrice(sum);
 
     const totalCount = items.reduce((acc, item) => acc + item.ItemQuantity, 0);
     setTotalItems(totalCount);
 
-    // Update out-of-stock items whenever items change
     const outOfStock = items.filter((item) => item.ItemQuantity === 0);
     setOutOfStockItems(outOfStock);
   }, [items]);
@@ -49,76 +47,66 @@ const ItemsDisplay = () => {
     }
   };
 
-  // Filter items based on the search query
   const filteredItems = items.filter((item) =>
     item.ItemName.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Function to generate and download the report as a PDF with a table
   const generateReport = () => {
     const doc = new jsPDF();
-
-    // Add report title
     doc.setFontSize(18);
     doc.text("Inventory Report", 10, 10);
-
-    // Add summary
     doc.setFontSize(12);
     doc.text(`Total Items in Inventory: ${totalItems}`, 10, 20);
-    doc.text(`Total Inventory Value: $${totalPrice.toFixed(2)}`, 10, 30);
+    doc.text(`Total Inventory Value: LKR${totalPrice.toFixed(2)}`, 10, 30);
 
-    // Add item details as a table
     const headers = [["Name", "Brand", "Category", "Price", "Quantity", "Status"]];
     const data = items.map((item) => [
       item.ItemName,
       item.ItemBrand,
       item.ItemCategory,
-      `$${item.ItemPrice}`,
+      `LKR ${item.ItemPrice}`,
       item.ItemQuantity,
-      item.ItemStatus,
+      item.ItemQuantity === 0 ? "Out of Stock" : item.ItemStatus,
     ]);
 
-    // Use autoTable as a standalone function
     autoTable(doc, {
       head: headers,
       body: data,
-      startY: 40, // Start the table below the summary
+      startY: 40,
     });
 
-    // Save the PDF
     doc.save("inventory_report.pdf");
   };
 
   return (
-    <div className="container">
-      <h2 style={{ textAlign: "right", marginRight: "230px", color: "white" }}>Items</h2>
+    <div className="item-container">
+      <h2 style={{ textAlign: "left", marginRight: "230px", color: "Blue" }}>All Items In My Home</h2>
+      
 
-      {/* Search Bar */}
       <div className="search-bar">
         <input
           type="text"
-          placeholder="Search items by name..."
+          placeholder="Search Items by name..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
 
-      {/* Display total number of items and total price */}
       <div className="inventory-summary">
         <div className="total-items">
           <h3>Total Items in Inventory: {totalItems}</h3>
         </div>
         <div className="total-price">
-          <h3>Total Inventory Value: ${totalPrice.toFixed(2)}</h3>
+          <h3>Total Inventory Value: LKR {totalPrice.toFixed(2)}</h3>
         </div>
       </div>
 
-      {/* Out-of-Stock Notification */}
       {outOfStockItems.length > 0 && (
         <div className="out-of-stock-notification">
+          <h4 className="notification-text">Out of Stock Items: {outOfStockItems.length}</h4>
           {outOfStockItems.map((item) => (
-            <div key={item._id} className="notification-item">
-              <span className="notification-text">
+            <div key={item._id} className="notification-item" style={{ color: "red", fontWeight: "bold", textAlign:"center" }}>
+              <span className="notification-text" style={{ color: "red", fontWeight: "bold", textAlign:"center" }}>
                 {item.ItemName} is out of stock. Please fill the stock.
               </span>
             </div>
@@ -126,16 +114,14 @@ const ItemsDisplay = () => {
         </div>
       )}
 
-      
-
-      <table>
+      <table className="item-table">
         <thead>
           <tr>
             <th>Image</th>
             <th>Name</th>
             <th>Brand</th>
             <th>Category</th>
-            <th>Price</th>
+            <th>Price LKR</th>
             <th>Quantity</th>
             <th>Status</th>
             <th>Actions</th>
@@ -150,9 +136,15 @@ const ItemsDisplay = () => {
               <td>{item.ItemName}</td>
               <td>{item.ItemBrand}</td>
               <td>{item.ItemCategory}</td>
-              <td>${item.ItemPrice}</td>
+              <td>{item.ItemPrice}</td>
               <td>{item.ItemQuantity}</td>
-              <td>{item.ItemStatus}</td>
+              <td>
+                {item.ItemQuantity === 0 ? (
+                  <button className="out-of-stock-btn">Out of Stock</button>
+                ) : (
+                  <button className="in-stock-btn">Available</button>
+                )}
+              </td>
               <td>
                 <Link to={`/item/${item._id}`}>
                   <button className="view">View</button>
@@ -167,15 +159,14 @@ const ItemsDisplay = () => {
         </tbody>
       </table>
 
-       {/* Button Container */}
-  <div className="button-container">
-    <Link to="/createitem">
-      <button className="create-button">Create Item</button>
-    </Link>
-    <button className="report-button" onClick={generateReport}>
-      Generate Report
-    </button>
-  </div>
+      <div className="button-container">
+        <Link to="/createitem">
+          <button className="create-button">Create Item</button>
+        </Link>
+        <button className="report-button" onClick={generateReport}>
+          Generate Report
+        </button>
+      </div>
     </div>
   );
 };

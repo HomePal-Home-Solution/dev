@@ -26,25 +26,36 @@ function UpdateShopping() {
       const response = await axios.get(`/api/shopping/view/${id}`);
       setFormData(response.data);
     } catch (error) {
-      console.error("Error fetching item", error);
       toast.error("Failed to fetch item");
     } finally {
       setIsLoading(false);
     }
   };
 
+  // Prevent negative/zero in quantity input
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === "quantity") {
+      // Only allow positive integers
+      const cleanValue = value.replace(/[^0-9]/g, "");
+      setFormData({ ...formData, [name]: cleanValue });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
+  // Prevent submission if quantity is not a positive number
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.quantity || Number(formData.quantity) < 1) {
+      toast.error("Quantity must be a positive number.");
+      return;
+    }
     try {
       await axios.put(`/api/shopping/update/${id}`, formData);
       toast.success("Item updated successfully!");
       navigate("/create-shopping");
     } catch (error) {
-      console.error("Error updating item", error);
       toast.error("Failed to update item");
     }
   };
@@ -82,6 +93,8 @@ function UpdateShopping() {
           onChange={handleChange}
           className="input-field"
           required
+          min="1"
+          onKeyDown={e => (e.key === '-' || e.key === 'e') && e.preventDefault()}
         />
         <input
           type="text"

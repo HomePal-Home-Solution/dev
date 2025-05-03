@@ -13,6 +13,7 @@
     text-align: center;
     color: #333;
     margin-bottom: 20px;
+    margin: 50px 150px;
 }
 
 .item-details {
@@ -20,25 +21,26 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    margin: 50px 150px;
 }
 
 .item-image img {
-    max-width: 100%;
+    max-width: 50%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 3px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .item-info {
     width: 100%;
     padding: 20px;
-    background-color: #f8f9fa;
+    background-color: #c6d0da;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .item-info h2 {
-    color: #007bff;
+    color: #2e2a20;
     margin-bottom: 10px;
 }
 

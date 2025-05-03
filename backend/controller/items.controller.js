@@ -85,44 +85,87 @@ export const getItemById = async (req, res) => {
 
 // Update an item by ID
 
+// export const updateItem = async (req, res) => {
+//     try {
+
+//         const { ItemName, ItemBrand, ItemDescription, ItemPrice, ItemCategory, ItemQuantity, ItemStatus } = req.body;
+
+//         // Convert the uploaded file to a base64 string (if a new file is uploaded)
+//         const ItemImage = req.file ? req.file.buffer.toString('base64') : req.body.ItemImage;
+
+//         const updatedItem = await Item.findByIdAndUpdate( req.params.id,
+//             {
+//                 ItemName,
+//                 ItemImage, // Update the base64-encoded image string
+//                 ItemBrand,
+//                 ItemDescription,
+//                 ItemPrice,
+//                 ItemCategory,
+//                 ItemQuantity,
+//                 ItemStatus,
+                
+//             },
+//             { new: true }
+//         );
+//         if (!updatedItem) return res.status(404).json({ message: 'Item not found' });
+
+//         // Update status if quantity is 0
+//         if (updatedItem.ItemQuantity === 0) {
+//             updatedItem.ItemStatus = 'Out of Stock';
+//             await updatedItem.save();
+//         }
+
+//         // Format the updated item to include _id first
+//         const responseItem = {
+//             _id: updatedItem._id,
+//             ...updatedItem._doc
+//         };
+
+//         res.status(200).json({ message: "Item updated successfully", item: responseItem });
+//     } catch (error) {
+//         res.status(400).json({ message: error.message });
+//     }
+// };
+
 export const updateItem = async (req, res) => {
     try {
-
         const { ItemName, ItemBrand, ItemDescription, ItemPrice, ItemCategory, ItemQuantity, ItemStatus } = req.body;
 
-        // Convert the uploaded file to a base64 string (if a new file is uploaded)
-        const ItemImage = req.file ? req.file.buffer.toString('base64') : req.body.ItemImage;
+        // Find the existing item first
+        const existingItem = await Item.findById(req.params.id);
+        if (!existingItem) return res.status(404).json({ message: 'Item not found' });
 
-        const updatedItem = await Item.findByIdAndUpdate( req.params.id,
-            {
-                ItemName,
-                ItemImage, // Update the base64-encoded image string
-                ItemBrand,
-                ItemDescription,
-                ItemPrice,
-                ItemCategory,
-                ItemQuantity,
-                ItemStatus,
-                
-            },
+        // Prepare update data
+        const updateData = {
+            ItemName,
+            ItemBrand,
+            ItemDescription,
+            ItemPrice,
+            ItemCategory,
+            ItemQuantity,
+            ItemStatus,
+        };
+
+        // Only update image if a new file is uploaded
+        if (req.file) {
+            updateData.ItemImage = req.file.buffer.toString('base64');
+        }
+
+        const updatedItem = await Item.findByIdAndUpdate(
+            req.params.id,
+            updateData,
             { new: true }
         );
-        if (!updatedItem) return res.status(404).json({ message: 'Item not found' });
 
-        // Update status if quantity is 0
+        // Update status based on quantity
         if (updatedItem.ItemQuantity === 0) {
             updatedItem.ItemStatus = 'Out of Stock';
             await updatedItem.save();
         }
 
-        // Format the updated item to include _id first
-        const responseItem = {
-            _id: updatedItem._id,
-            ...updatedItem._doc
-        };
-
-        res.status(200).json({ message: "Item updated successfully", item: responseItem });
+        res.status(200).json({ message: "Item updated successfully", item: updatedItem });
     } catch (error) {
+        console.error("Error updating item:", error);
         res.status(400).json({ message: error.message });
     }
 };
