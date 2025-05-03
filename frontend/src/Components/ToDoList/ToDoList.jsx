@@ -3,11 +3,13 @@ import axios from "axios";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { useNavigate } from "react-router-dom";
-import '../ToDoList/ToDoLsit.css/todolist.css';
+import "../ToDoList/ToDoLsit_css/todolist.css";
 
 const ToDoList = () => {
-  const [tasks, setTasks] = useState([]); // State to store tasks
-  const [searchTerm, setSearchTerm] = useState(""); // State to store the search term
+  const [tasks, setTasks] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [taskIdToDelete, setTaskIdToDelete] = useState(null);
   const navigate = useNavigate();
 
   // Fetch tasks from backend
@@ -25,7 +27,7 @@ const ToDoList = () => {
     try {
       const updatedTask = { completed: !currentStatus };
       await axios.put(`/api/toDoList/update/${taskId}`, updatedTask);
-      fetchTasks(); // Refresh the tasks after update
+      fetchTasks();
     } catch (error) {
       console.error("Error updating task completion:", error);
     }
@@ -35,10 +37,24 @@ const ToDoList = () => {
   const deleteTask = async (taskId) => {
     try {
       await axios.delete(`/api/toDoList/delete/${taskId}`);
-      fetchTasks(); // Refresh the tasks after deletion
+      fetchTasks();
+      setShowConfirmModal(false);
+      setTaskIdToDelete(null);
     } catch (error) {
       console.error("Error deleting task:", error);
     }
+  };
+
+  // Show confirmation modal
+  const handleDeleteClick = (taskId) => {
+    setTaskIdToDelete(taskId);
+    setShowConfirmModal(true);
+  };
+
+  // Cancel deletion
+  const handleCancelDelete = () => {
+    setShowConfirmModal(false);
+    setTaskIdToDelete(null);
   };
 
   // Fetch tasks when component mounts
@@ -48,12 +64,12 @@ const ToDoList = () => {
 
   // Handle navigation to AddTaskForm page
   const handleCreateTask = () => {
-    navigate("/daily-tasks-form"); // Navigate to AddTaskForm page
+    navigate("/daily-tasks-form");
   };
 
   // Handle navigation to UpdateToDo page
   const handleUpdateTask = (taskId) => {
-    navigate(`/update-todolist/${taskId}`); // Navigate to UpdateToDo page with task ID
+    navigate(`/update-todolist/${taskId}`);
   };
 
   // Handle search input change
@@ -69,7 +85,7 @@ const ToDoList = () => {
     const tableColumn = ["Title", "Description", "Due Date", "Priority", "Completed"];
     const tableRows = [];
 
-    tasks.forEach(task => {
+    tasks.forEach((task) => {
       const taskData = [
         task.title,
         task.description,
@@ -90,9 +106,16 @@ const ToDoList = () => {
   };
 
   // Filter tasks based on search term
-  const filteredTasks = tasks.filter((task) =>
-    task.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredTasks = tasks
+    .filter((task) => {
+      const lowerSearch = searchTerm.toLowerCase();
+      return (
+        !task.completed &&
+        (task.title.toLowerCase().includes(lowerSearch) ||
+          task.description.toLowerCase().includes(lowerSearch))
+      );
+    })
+    .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
 
   return (
     <div className="todo-container">
@@ -136,13 +159,14 @@ const ToDoList = () => {
                   </span>
                 </td>
                 <td>
-                  {/* Update button */}
-                  <button className="edit-icon" onClick={() => handleUpdateTask(task._id)}>Update</button>
-                  {/* Delete button */}
-                  <button className="delete-icon" onClick={() => deleteTask(task._id)}>Delete</button>
+                  <button className="edit-icon" onClick={() => handleUpdateTask(task._id)}>
+                    Update
+                  </button>
+                  <button className="delete-icon" onClick={() => handleDeleteClick(task._id)}>
+                    Delete
+                  </button>
                 </td>
                 <td>
-                  {/* Complete/Incomplete button */}
                   <button
                     onClick={() => toggleComplete(task._id, task.completed)}
                     className="complete-btn"
@@ -162,6 +186,70 @@ const ToDoList = () => {
           )}
         </tbody>
       </table>
+
+      <h2>Completed Tasks</h2>
+      <table className="todo-table completed-table">
+        <thead>
+          <tr>
+            <th>Task Title</th>
+            <th>Description</th>
+            <th>Due Date</th>
+            <th>Priority</th>
+            <th>Completed At</th>
+            <th>Undo</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tasks.filter((task) => task.completed).length > 0 ? (
+            tasks
+              .filter((task) => task.completed)
+              .sort((a, b) => new Date(b.updatedAt || b.dueDate) - new Date(a.updatedAt || a.dueDate))
+              .map((task) => (
+                <tr key={task._id}>
+                  <td>{task.title}</td>
+                  <td>{task.description}</td>
+                  <td>{new Date(task.dueDate).toLocaleString()}</td>
+                  <td>
+                    <span className={`priority ${task.priority.toLowerCase()}`}>
+                      {task.priority}
+                    </span>
+                  </td>
+                  <td>{new Date(task.updatedAt || Date.now()).toLocaleString()}</td>
+                  <td>
+                    <button
+                      onClick={() => toggleComplete(task._id, task.completed)}
+                      className="complete-btn"
+                      style={{ backgroundColor: "#ffc107" }}
+                    >
+                      Not Completed
+                    </button>
+                  </td>
+                </tr>
+              ))
+          ) : (
+            <tr>
+              <td colSpan="6">No completed tasks</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+
+      {showConfirmModal && (
+        <div className="confirm-modal-overlay">
+          <div className="confirm-modal">
+            <h3>Confirm Deletion</h3>
+            <p>Are you sure you want to delete this task?</p>
+            <div className="confirm-modal-buttons">
+              <button className="cancel-btn" onClick={handleCancelDelete}>
+                Cancel
+              </button>
+              <button className="delete-btn" onClick={() => deleteTask(taskIdToDelete)}>
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import "../ToDoList/ToDoLsit.css/updateTodo.css"; // Import the CSS for styling
+// import DatePicker from "react-datepicker"; // Import react-datepicker
+// import "react-datepicker/dist/react-datepicker.css"; // Import default styles
+import "../ToDoList/ToDoLsit_css/updateTodo.css"; // Import the CSS for styling
 
 const UpdateToDo = () => {
   const { taskId } = useParams();
   const [task, setTask] = useState(null);
   const [errors, setErrors] = useState({});
+  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false); // State to control date picker visibility
   const navigate = useNavigate();
 
   // Fetch the task based on taskId
@@ -82,13 +85,28 @@ const UpdateToDo = () => {
     setTask({ ...task, [name]: value });
   };
 
+  const handleDateChange = (e) => {
+    const dateValue = e.target.value;
+    const isoDate = new Date(dateValue).toISOString(); // Convert to full ISO format
+    setTask({ ...task, dueDate: isoDate });
+    // setTask({ ...task, dueDate: date.toISOString() }); // Update dueDate in ISO format
+  };
+
+  const handleOpenDatePicker = () => {
+    setIsDatePickerOpen(true);
+  };
+
+  const handleCloseDatePicker = () => {
+    setIsDatePickerOpen(false);
+  };
+
   return (
     <div className="update-todo-container">
       <h1 className="title">Update Task</h1>
       {errors.global && <div className="error-message" style={{ color: "red" }}>{errors.global}</div>}
       {task ? (
         <form onSubmit={handleUpdate} className="update-todo-form">
-          <div className="form-group">
+          <div className="form-group-task">
             <label>Title</label>
             <input
               type="text"
@@ -99,7 +117,7 @@ const UpdateToDo = () => {
             />
             {errors.title && <p className="error-text" style={{ color: "red" }}>{errors.title}</p>}
           </div>
-          <div className="form-group">
+          <div className="form-group-task">
             <label>Description</label>
             <textarea
               name="description"
@@ -109,18 +127,46 @@ const UpdateToDo = () => {
             />
             {errors.description && <p className="error-text" style={{ color: "red" }}>{errors.description}</p>}
           </div>
-          <div className="form-group">
+          <div className="form-group-task">
             <label>Due Date</label>
-            <input
-              type="datetime-local"
-              name="dueDate"
-              value={task.dueDate}
-              onChange={handleChange}
-              className="form-input"
-            />
+            <input 
+            name="dueDate" 
+            type="date" 
+            className="form-input"
+            onChange={handleDateChange}
+            value={task.dueDate ? task.dueDate.slice(0, 10) : ""}/>
+            {/* <div className="date-picker-container">
+              <input
+                type="text"
+                value={task.dueDate ? new Date(task.dueDate).toLocaleString() : ""}
+                onClick={handleOpenDatePicker}
+                className="form-input"
+                readOnly
+                placeholder="Select due date"
+              />
+              {isDatePickerOpen && (
+                <div className="date-picker-wrapper">
+                  <DatePicker
+                    selected={task.dueDate ? new Date(task.dueDate) : null}
+                    onChange={handleDateChange}
+                    showTimeSelect
+                    dateFormat="Pp"
+                    inline
+                    minDate={new Date()} // Prevent selecting past dates
+                  />
+                  <button
+                    type="button"
+                    className="date-picker-ok-btn"
+                    onClick={handleCloseDatePicker}
+                  >
+                    OK
+                  </button>
+                </div>
+              )}
+            </div> */}
             {errors.dueDate && <p className="error-text" style={{ color: "red" }}>{errors.dueDate}</p>}
           </div>
-          <div className="form-group">
+          <div className="form-group-task">
             <label>Priority</label>
             <select
               name="priority"
@@ -134,7 +180,7 @@ const UpdateToDo = () => {
             </select>
             {errors.priority && <p className="error-text" style={{ color: "red" }}>{errors.priority}</p>}
           </div>
-          <div className="form-group">
+          <div className="form-group-task">
             <button type="submit" className="submit-btn">
               Update Task
             </button>
@@ -145,7 +191,7 @@ const UpdateToDo = () => {
       )}
       
       {/* Back Button */}
-      <div className="form-group">
+      <div className="form-group-task">
         <button onClick={handleBack} className="back-btn">
           Back to To-Do List
         </button>
@@ -155,7 +201,6 @@ const UpdateToDo = () => {
 };
 
 export default UpdateToDo;
-
 
 
 
