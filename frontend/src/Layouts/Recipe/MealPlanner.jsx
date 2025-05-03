@@ -24,7 +24,7 @@ const handleSearch = async (filters) => {
 
       <SearchBox onSearch={handleSearch} />
 
-      <div style={{ margin: "30px" }}>
+      {/* <div style={{ margin: "30px" }}>
         {meals.length > 0 ? (
           <ul>
             {meals.map((meal) => (
@@ -34,6 +34,18 @@ const handleSearch = async (filters) => {
         ) : (
           <p>No meals found.</p>
         )}
+      </div> */}
+
+      <div className="meal-results">
+        {meals.map((meal) => (
+          <div key={meal._id} className="meal-card">
+            <h3>{meal.name}</h3>
+            <p><strong>Calories:</strong> {meal.calories} cal</p>
+            <p><strong>Sugar:</strong> {meal.sugar}</p>
+            <p><strong>Fat:</strong> {meal.fat}</p>
+            <p><strong>Type:</strong> {meal.type}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
