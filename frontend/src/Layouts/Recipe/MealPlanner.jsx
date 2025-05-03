@@ -6,14 +6,15 @@ import axios from 'axios';
 const MealPlanner = () => {
   const [meals, setMeals] = useState([]);
 
-  const handleSearch = async (filters) => {
+const handleSearch = async (filters) => {
     try {
-      const response = await axios.get('/api/meals', { params: filters });
-      setMeals(response.data.data); // ✅ Extract just the meals array
+      const response = await axios.post('/api/meals/generate-plan', filters);
+      setMeals(response.data.data);
     } catch (error) {
-      console.error('Error fetching meals:', error);
+      console.error('Error generating meal plan:', error);
     }
   };
+  
 
   return (
     <div className="right-content">
@@ -27,7 +28,7 @@ const MealPlanner = () => {
         {meals.length > 0 ? (
           <ul>
             {meals.map((meal) => (
-              <li key={meal._id}>{meal.name} - {meal.calories} cal</li>
+              <li key={meal._id}>{meal.name}  {meal.calories} cal  {meal.sugar}  {meal.fat}  {meal.type}</li>
             ))}
           </ul>
         ) : (

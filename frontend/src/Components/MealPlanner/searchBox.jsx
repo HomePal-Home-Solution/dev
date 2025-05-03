@@ -5,23 +5,24 @@ import {
 } from '@mui/material';
 
 const SearchBox = ({ onSearch }) => {
+
     const [formData, setFormData] = React.useState({
-        type: [], // <-- must be an array for multiple select
+        type: [],
         calories: '',
         sugar: '',
         fat: ''
       });
-      
 
   const [openError, setOpenError] = React.useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: name === 'type' ? typeof value === 'string' ? value.split(',') : value : value
     }));
   };
+  
 
   const isAllEmpty = Object.values(formData).every(value => value === '');
 
@@ -29,7 +30,7 @@ const SearchBox = ({ onSearch }) => {
     if (isAllEmpty) {
       setOpenError(true);
     } else {
-      onSearch(formData); // Send data to parent
+      onSearch(formData);
     }
   };
 
@@ -39,12 +40,13 @@ const SearchBox = ({ onSearch }) => {
         <Grid item xs={3}>
           <TextField
             select
+            SelectProps={{ multiple: true }}
             label="Meal Type"
             name="type"
             value={formData.type}
             onChange={handleChange}
             fullWidth
-          >
+            >
             <MenuItem value="breakfast">Breakfast</MenuItem>
             <MenuItem value="lunch">Lunch</MenuItem>
             <MenuItem value="dinner">Dinner</MenuItem>

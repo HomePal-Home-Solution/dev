@@ -11,7 +11,7 @@ import MealOpenDialog from './mealOpenDialog';
 import axios from 'axios';
 import UpdateMealDialog from './updateMealDialog';
 
-export default function MealList({ searchQuery }) {  // Receive searchQuery as a prop
+export default function MealList({ searchQuery }) {
   const [meals, setMeals] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -52,9 +52,8 @@ export default function MealList({ searchQuery }) {  // Receive searchQuery as a
     }
   };
 
-  // Filter meals based on the search query received from Meal.jsx
   const filteredMeals = meals.filter((meal) =>
-    meal.name.toLowerCase().includes(searchQuery.toLowerCase()) // Filter meals by name
+    meal.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const visibleRows = React.useMemo(
